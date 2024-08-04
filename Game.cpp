@@ -33,14 +33,16 @@ void Game::pollEvents()
 void Game::update()
 {
     pollEvents();
-    entity.update(overWorldMap);
+    player.update(overWorldMap);
+    enemy.update(overWorldMap, player);
 }
 
 void Game::render()
 {
     window->clear(sf::Color::Black);
     overWorldMap.render(window);
-    entity.render(window, overWorldMap);
+    enemy.render(window, overWorldMap);
+    player.render(window, overWorldMap);
     window->display();
 }
 

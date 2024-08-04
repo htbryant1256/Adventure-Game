@@ -7,15 +7,15 @@
 class Entity
 {
 public:
-	int posY = 1;
-	int posX = 1;
+	int posY;
+	int posX;
 	void render(sf::RenderWindow* window, OverWorldMap overWorldMap);
-	void update(OverWorldMap& overWorldMap);
-private:
 
 	sf::RectangleShape entity;
-
-	int delay = 5;
+	int delay;
 	int updateDelay = delay;
+private:
+
+
 };
 

@@ -7,7 +7,8 @@
 #include <iostream>
 
 #include "OverWorldMap.h"
-#include "Entity.h"
+#include "Player.h"
+#include "Enemy.h"
 class Game
 {
 private:
@@ -16,7 +17,8 @@ private:
 	sf::VideoMode videoMode;
 	
 	OverWorldMap overWorldMap;
-	Entity entity;
+	Player player;
+	Enemy enemy;
 	int windowHeight;
 	int windowWidth;
 
