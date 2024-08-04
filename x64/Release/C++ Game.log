@@ -1,0 +1,24 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (C++ Game.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Enemy.cpp
+  Game.cpp
+C:\Users\henry\source\repos\C++ Game - Cookie CLicker\Game.cpp(24,51): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\C++ Game - Cookie CLicker\Game.cpp(24,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\C++ Game - Cookie CLicker\Game.cpp(96,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\henry\source\repos\C++ Game - Cookie CLicker\Game.cpp(96,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Main.cpp
+  Map.cpp
+  Player.cpp
+  UserInterface.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 236 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  C++ Game.vcxproj -> C:\Users\henry\source\repos\C++ Game - Cookie CLicker\x64\Release\Krabby Clicker.exe
