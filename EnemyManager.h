@@ -6,7 +6,7 @@ class EnemyManager
 {
 public:
 	void update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY);
-	void render(sf::RenderWindow* window, OverWorldMap& overWorldMap);
+	void render(sf::RenderWindow* window, OverWorldMap* overWorldMap);
 	void populateMap(OverWorldMap& overWorldMap, int playerPosX, int playerPosY);
 	EnemyManager();
 	std::vector<Enemy> enemyVector;

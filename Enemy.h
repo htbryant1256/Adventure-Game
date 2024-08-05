@@ -14,6 +14,6 @@ private:
     void randomlyWalk(OverWorldMap& overWorldMap);
     float distanceFromPlayer(int playerPosX, int playerPosY);
 
-    int seekingDistance = 5;
+    int seekingDistance;
 };
 

@@ -2,8 +2,8 @@
 
 void OverWorldMap::render(sf::RenderWindow* window)
 {
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 19; j++) {
+	for (int i = 0; i < 20; i++) {
+		for (int j = 0; j < 38; j++) {
 			if (tileMap[i][j] == 'g') {
 				objectTileMap[i][j].setFillColor(sf::Color(100,200,100));
 			}
@@ -28,8 +28,8 @@ void OverWorldMap::initOverWorldMap()
 	tile.setOutlineColor(sf::Color::White);
 	tile.setOutlineThickness(1);
 	tile.setSize(sf::Vector2f(tileSize, tileSize));
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 19; j++) {
+	for (int i = 0; i < 20; i++) {
+		for (int j = 0; j < 38; j++) {
 			tile.setPosition(sf::Vector2f(10 + (j * tileSize), 40 + (i * tileSize)));
 			objectTileMap[i][j] = tile;
 		}
@@ -38,23 +38,23 @@ void OverWorldMap::initOverWorldMap()
 
 void OverWorldMap::initMapArray()
 {
-	for (int k = 0; k < 10; k++) {
-		for (int l = 0; l < 19; l++) {
+	for (int k = 0; k < 20; k++) {
+		for (int l = 0; l < 38; l++) {
 			mapArray[0][0][k][l] = map1[k][l];
 		}
 	}
-	for (int k = 0; k < 10; k++) {
-		for (int l = 0; l < 19; l++) {
+	for (int k = 0; k < 20; k++) {
+		for (int l = 0; l < 38; l++) {
 			mapArray[1][0][k][l] = map2[k][l];
 		}
 	}
-	for (int k = 0; k < 10; k++) {
-		for (int l = 0; l < 19; l++) {
+	for (int k = 0; k < 20; k++) {
+		for (int l = 0; l < 38; l++) {
 			mapArray[0][1][k][l] = map3[k][l];
 		}
 	}
-	for (int k = 0; k < 10; k++) {
-		for (int l = 0; l < 19; l++) {
+	for (int k = 0; k < 20; k++) {
+		for (int l = 0; l < 38; l++) {
 			mapArray[1][1][k][l] = map4[k][l];
 		}
 	}
@@ -68,8 +68,8 @@ int OverWorldMap::getTileSize()
 void OverWorldMap::loadMapLeft()
 {
 	if (mapPosX != 0) {
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 19; j++) {
+		for (int i = 0; i < 20; i++) {
+			for (int j = 0; j < 38; j++) {
 				tileMap[i][j] = mapArray[mapPosX - 1][mapPosY][i][j];
 			}
 		}
@@ -81,8 +81,8 @@ void OverWorldMap::loadMapLeft()
 void OverWorldMap::loadMapRight()
 {
 	if (mapPosX != 1) {
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 19; j++) {
+		for (int i = 0; i < 20; i++) {
+			for (int j = 0; j < 38; j++) {
 				tileMap[i][j] = mapArray[mapPosX + 1][mapPosY][i][j];
 			}
 		}
@@ -94,8 +94,8 @@ void OverWorldMap::loadMapRight()
 void OverWorldMap::loadMapUp()
 {
 	if (mapPosY != 0) {
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 19; j++) {
+		for (int i = 0; i < 20; i++) {
+			for (int j = 0; j < 38; j++) {
 				tileMap[i][j] = mapArray[mapPosX][mapPosY - 1][i][j];
 			}
 		}
@@ -107,8 +107,8 @@ void OverWorldMap::loadMapUp()
 void OverWorldMap::loadMapDown()
 {
 	if (mapPosY != 1) {
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 19; j++) {
+		for (int i = 0; i < 20; i++) {
+			for (int j = 0; j < 38; j++) {
 				tileMap[i][j] = mapArray[mapPosX][mapPosY + 1][i][j];
 			}
 		}

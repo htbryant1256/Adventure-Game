@@ -9,7 +9,7 @@ class Entity
 public:
 	int posY;
 	int posX;
-	void render(sf::RenderWindow* window, OverWorldMap overWorldMap);
+	void render(sf::RenderWindow* window, OverWorldMap* overWorldMap);
 
 	sf::RectangleShape entity;
 	sf::RectangleShape entityDirection;

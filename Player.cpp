@@ -4,14 +4,20 @@ Player::Player()
 {
 	posX = 1;
 	posY = 1;
-	delay = 8;
+	delay = 5;
 	entity.setFillColor(sf::Color(100,150,100));
 }
 
 void Player::updateCollisions(OverWorldMap& overWorldMap)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		if (overWorldMap.tileMap[posY][posX + 1] != 's' && posY + 1 != 19) {
+		if (overWorldMap.tileMap[posY][posX + 1] != 's' && posY + 1 != 38) {
+			/*
+			for (auto& element : enemyManager.enemyVector) {
+				if (((element.posX == posX) || (element.posX == posX - 1) || (element.posX == posX + 1)) && (element.posY == posY - 1)) {
+					printf("HIT NORTH\n");
+				}
+			}*/
 			posX += 1;
 			updateDelay = delay;
 		}
@@ -27,7 +33,7 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 		entityDirection.setRotation(90);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		if (overWorldMap.tileMap[posY + 1][posX] != 's' && posY + 1 != 10) {
+		if (overWorldMap.tileMap[posY + 1][posX] != 's' && posY + 1 != 20) {
 			posY += 1;
 			updateDelay = delay;
 		}
@@ -46,23 +52,23 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 
 void Player::updateScreenChange(OverWorldMap& overWorldMap)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && overWorldMap.tileMap[posY][posX] == 'd' && posX == 18) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && overWorldMap.tileMap[posY][posX] == 'd' && posX == 37) {
 		posX = 0;
 		overWorldMap.loadMapRight();
 		updateDelay = delay;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && overWorldMap.tileMap[posY][posX] == 'd' && posX == 0) {
-		posX = 18;
+		posX = 37;
 		overWorldMap.loadMapLeft();
 		updateDelay = delay;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && overWorldMap.tileMap[posY][posX] == 'd' && posY == 9) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && overWorldMap.tileMap[posY][posX] == 'd' && posY == 19) {
 		posY = 0;
 		overWorldMap.loadMapDown();
 		updateDelay = delay;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && overWorldMap.tileMap[posY][posX] == 'd' && posY == 0) {
-		posY = 9;
+		posY = 19;
 		overWorldMap.loadMapUp();
 		updateDelay = delay;
 	}
@@ -76,12 +82,34 @@ void Player::attackEnemy(EnemyManager& enemyManager)
 			case NORTH:
 				for (auto& element : enemyManager.enemyVector) {
 					if (((element.posX == posX) || (element.posX == posX - 1) || (element.posX == posX + 1)) && (element.posY == posY - 1)) {
-						printf("HIT\n");
+						printf("HIT NORTH\n");
+					}
+				}
+				break;
+			case EAST:
+				for (auto& element : enemyManager.enemyVector) {
+					if (((element.posY == posY) || (element.posY == posY - 1) || (element.posY == posY + 1)) && (element.posX == posX + 1)) {
+						printf("HIT EAST \n");
+					}
+				}
+				break;
+			case SOUTH:
+				for (auto& element : enemyManager.enemyVector) {
+					if (((element.posX == posX) || (element.posX == posX - 1) || (element.posX == posX + 1)) && (element.posY == posY + 1)) {
+						printf("HIT SOUTH\n");
+					}
+				}
+				break;
+			case WEST:
+				for (auto& element : enemyManager.enemyVector) {
+					if(((element.posY == posY) || (element.posY == posY - 1) || (element.posY == posY + 1)) && (element.posX == posX - 1)) {
+						printf("HIT WEST\n");
 					}
 				}
 				break;
 
 		}
+		updateDelay = delay;
 	}
 }
 
@@ -91,9 +119,10 @@ void Player::update(OverWorldMap& overWorldMap, EnemyManager& enemyManager)
 
 		//Stone Collisions
 		updateCollisions(overWorldMap);
+		attackEnemy(enemyManager);
 	}
 	updateDelay--;
 	//Screen Change Logic
 	updateScreenChange(overWorldMap);
-	attackEnemy(enemyManager);
+	
 }

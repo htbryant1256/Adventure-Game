@@ -4,7 +4,8 @@ Enemy::Enemy(int x, int y)
 {
 	posX = x;
 	posY = y;
-	delay = 15;
+	delay = 10;
+	seekingDistance = 10;
 	entity.setFillColor(sf::Color(150, 100, 100));
 	srand(time(NULL));
 }

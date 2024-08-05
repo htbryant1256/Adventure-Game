@@ -8,7 +8,7 @@ void EnemyManager::update(OverWorldMap& overWorldMap, int playerPosX, int player
 	}
 }
 
-void EnemyManager::render(sf::RenderWindow* window, OverWorldMap& overWorldMap)
+void EnemyManager::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)
 {
 	for (auto& element : enemyVector) {
 		element.render(window, overWorldMap);

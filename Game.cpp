@@ -41,8 +41,8 @@ void Game::render()
 {
     window->clear(sf::Color::Black);
     overWorldMap.render(window);
-    enemyManager.render(window, overWorldMap);
-    player.render(window, overWorldMap);
+    enemyManager.render(window, &overWorldMap);
+    player.render(window, &overWorldMap);
     window->display();
 }
 
