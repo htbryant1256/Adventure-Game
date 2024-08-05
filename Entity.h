@@ -23,6 +23,10 @@ public:
 		WEST = 4,
 	};
 	Direction direction;
+
+	int health;
+	bool hit = false;
+
 private:
 
 

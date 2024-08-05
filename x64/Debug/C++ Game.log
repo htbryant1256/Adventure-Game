@@ -1,33 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (C++ Game.vcxproj, Krabby Clicker.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   Enemy.cpp
 C:\Users\henry\source\repos\Adventure_Game\Enemy.cpp(10,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\henry\source\repos\Adventure_Game\Enemy.cpp(72,12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  EnemyManager.cpp
-C:\Users\henry\source\repos\Adventure_Game\EnemyManager.cpp(43,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\henry\source\repos\Adventure_Game\EnemyManager.cpp(50,12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  Entity.cpp
-C:\Users\henry\source\repos\Adventure_Game\Entity.cpp(8,84): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\henry\source\repos\Adventure_Game\Entity.cpp(8,55): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\henry\source\repos\Adventure_Game\Entity.cpp(9,80): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\henry\source\repos\Adventure_Game\Entity.cpp(9,37): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  Game.cpp
-  Main.cpp
-  Player.cpp
-  Generating Code...
+C:\Users\henry\source\repos\Adventure_Game\Enemy.cpp(81,12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   C++ Game.vcxproj -> C:\Users\henry\source\repos\Adventure_Game\x64\Debug\Adventure Game.exe

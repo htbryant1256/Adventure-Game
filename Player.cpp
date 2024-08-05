@@ -83,6 +83,7 @@ void Player::attackEnemy(EnemyManager& enemyManager)
 				for (auto& element : enemyManager.enemyVector) {
 					if (((element.posX == posX) || (element.posX == posX - 1) || (element.posX == posX + 1)) && (element.posY == posY - 1)) {
 						printf("HIT NORTH\n");
+						element.hit = true;
 					}
 				}
 				break;
@@ -90,6 +91,7 @@ void Player::attackEnemy(EnemyManager& enemyManager)
 				for (auto& element : enemyManager.enemyVector) {
 					if (((element.posY == posY) || (element.posY == posY - 1) || (element.posY == posY + 1)) && (element.posX == posX + 1)) {
 						printf("HIT EAST \n");
+						element.hit = true;
 					}
 				}
 				break;
@@ -97,6 +99,7 @@ void Player::attackEnemy(EnemyManager& enemyManager)
 				for (auto& element : enemyManager.enemyVector) {
 					if (((element.posX == posX) || (element.posX == posX - 1) || (element.posX == posX + 1)) && (element.posY == posY + 1)) {
 						printf("HIT SOUTH\n");
+						element.hit = true;
 					}
 				}
 				break;
@@ -104,6 +107,7 @@ void Player::attackEnemy(EnemyManager& enemyManager)
 				for (auto& element : enemyManager.enemyVector) {
 					if(((element.posY == posY) || (element.posY == posY - 1) || (element.posY == posY + 1)) && (element.posX == posX - 1)) {
 						printf("HIT WEST\n");
+						element.hit = true;
 					}
 				}
 				break;

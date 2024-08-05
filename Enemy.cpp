@@ -8,6 +8,7 @@ Enemy::Enemy(int x, int y)
 	seekingDistance = 10;
 	entity.setFillColor(sf::Color(150, 100, 100));
 	srand(time(NULL));
+	health = 5;
 }
 
 void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
@@ -20,7 +21,15 @@ void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 			randomlyWalk(overWorldMap);
 		}
 	}
-		updateDelay--;
+	updateDelay--;
+	if (hit) {
+		entity.setFillColor(sf::Color(250, 250, 250));
+	}
+	else {
+		entity.setFillColor(sf::Color(150, 100, 100));
+	}
+
+
 }
 
 void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)

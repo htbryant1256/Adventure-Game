@@ -2,9 +2,24 @@
 
 void EnemyManager::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
+	int index = -1;
+	int counter = 0;
 	populateMap(overWorldMap, playerPosX, playerPosY);
 	for (auto& element : enemyVector) {
 		element.update(overWorldMap, playerPosX, playerPosY);
+
+		if (element.hit) {
+			element.health--;
+			element.hit = false;
+
+		}
+		if (element.health <= 0) {
+			index = counter;
+		}
+		counter++;
+	}
+	if (index != -1) {
+		enemyVector.erase(enemyVector.begin() + index);
 	}
 }
 
@@ -21,12 +36,12 @@ void EnemyManager::populateMap(OverWorldMap& overWorldMap, int playerPosX, int p
 		enemyVector.clear();
 		int numberOfEnemies = rand() % 3 + 1;
 		for (int i = 0; i < numberOfEnemies; i++) {
-			y = rand() % 9 + 1;
-			x = rand() % 18 + 1;
+			y = rand() % 19 + 1;
+			x = rand() % 37 + 1;
 
-			while (overWorldMap.tileMap[y][x] != 'g' || distanceFromPlayer(playerPosX, playerPosY) < 6) {
-				y = rand() % 9 + 1;
-				x = rand() % 18 + 1;
+			while (overWorldMap.tileMap[y][x] != 'g' || distanceFromPlayer(playerPosX, playerPosY) < 10) {
+				y = rand() % 19 + 1;
+				x = rand() % 37 + 1;
 			}
 			Enemy enemy(x, y);
 			enemyVector.push_back(enemy);
