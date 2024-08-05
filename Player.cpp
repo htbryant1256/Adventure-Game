@@ -4,7 +4,7 @@ Player::Player()
 {
 	posX = 1;
 	posY = 1;
-	delay = 5;
+	delay = 8;
 	entity.setFillColor(sf::Color(100,150,100));
 }
 
@@ -13,18 +13,24 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && overWorldMap.tileMap[posY][posX + 1] != 's' && posY + 1 != 19) {
 		posX += 1;
 		updateDelay = delay;
+		direction = EAST;
+		entityDirection.setRotation(-90);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && overWorldMap.tileMap[posY][posX - 1] != 's' && posY - 1 != -1) {
 		posX -= 1;
 		updateDelay = delay;
+		direction = WEST;
+		entityDirection.setRotation(90);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && overWorldMap.tileMap[posY + 1][posX] != 's' && posY + 1 != 10) {
 		posY += 1;
 		updateDelay = delay;
+		entityDirection.setRotation(0);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && overWorldMap.tileMap[posY - 1][posX] != 's' && posY - 1 != -1) {
 		posY -= 1;
 		updateDelay = delay;
+		entityDirection.setRotation(180);
 	}
 }
 

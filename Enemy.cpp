@@ -24,17 +24,21 @@ void Enemy::update(OverWorldMap& overWorldMap, Player player)
 
 void Enemy::seekPlayer(OverWorldMap& overWorldMap, Player player)
 {
-	if (player.posX > posX && overWorldMap.tileMap[posY][posX + 1] == 'g') {
+	if (player.posX > posX && overWorldMap.tileMap[posY][posX + 1] == 'g' && posX + 1 != player.posX) {
 		posX += 1;
+		entityDirection.setRotation(-90);
 	}
-	else if (player.posX < posX && overWorldMap.tileMap[posY][posX - 1] == 'g') {
+	else if (player.posX < posX && overWorldMap.tileMap[posY][posX - 1] == 'g' && posX +- 1 != player.posX) {
 		posX -= 1;
+		entityDirection.setRotation(90);
 	}
-	if (player.posY > posY && overWorldMap.tileMap[posY + 1][posX] == 'g') {
+	if (player.posY > posY && overWorldMap.tileMap[posY + 1][posX] == 'g' && posY + 1 != player.posY) {
 		posY += 1;
+		entityDirection.setRotation(0);
 	}
-	else if (player.posY < posY && overWorldMap.tileMap[posY - 1][posX] == 'g') {
+	else if (player.posY < posY && overWorldMap.tileMap[posY - 1][posX] == 'g' && posY - 1 != player.posY) {
 		posY -= 1;
+		entityDirection.setRotation(180);
 	}
 	updateDelay = delay;
 }
@@ -45,15 +49,19 @@ void Enemy::randomlyWalk(OverWorldMap& overWorldMap, Player player)
 
 	if (movement == 1 && overWorldMap.tileMap[posY][posX + 1] == 'g') {
 		posX += 1;
+		entityDirection.setRotation(-90);
 	}
 	if (movement == 2 && overWorldMap.tileMap[posY][posX - 1] == 'g') {
 		posX -= 1;
+		entityDirection.setRotation(90);
 	}
 	if (movement == 3 && overWorldMap.tileMap[posY + 1][posX] == 'g') {
 		posY += 1;
+		entityDirection.setRotation(0);
 	}
 	if (movement == 4 && overWorldMap.tileMap[posY - 1][posX] == 'g') {
 		posY -= 1;
+		entityDirection.setRotation(180);
 	}
 	updateDelay = delay;
 }
