@@ -33,8 +33,8 @@ void Game::pollEvents()
 void Game::update()
 {
     pollEvents();
-    player.update(overWorldMap);
-    enemyManager.update(overWorldMap, player);
+    player.update(overWorldMap, enemyManager);
+    enemyManager.update(overWorldMap, player.posX, player.posY);
 }
 
 void Game::render()

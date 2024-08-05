@@ -1,10 +1,10 @@
 #include "EnemyManager.h"
 
-void EnemyManager::update(OverWorldMap& overWorldMap, Player player)
+void EnemyManager::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
-	populateMap(overWorldMap, player);
+	populateMap(overWorldMap, playerPosX, playerPosY);
 	for (auto& element : enemyVector) {
-		element.update(overWorldMap, player);
+		element.update(overWorldMap, playerPosX, playerPosY);
 	}
 }
 
@@ -15,7 +15,7 @@ void EnemyManager::render(sf::RenderWindow* window, OverWorldMap& overWorldMap)
 	}
 }
 
-void EnemyManager::populateMap(OverWorldMap& overWorldMap, Player player)
+void EnemyManager::populateMap(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
 	if (overWorldMap.newMapLoaded == true) {
 		enemyVector.clear();
@@ -24,7 +24,7 @@ void EnemyManager::populateMap(OverWorldMap& overWorldMap, Player player)
 			y = rand() % 9 + 1;
 			x = rand() % 18 + 1;
 
-			while (overWorldMap.tileMap[y][x] != 'g' || distanceFromPlayer(player) < 6) {
+			while (overWorldMap.tileMap[y][x] != 'g' || distanceFromPlayer(playerPosX, playerPosY) < 6) {
 				y = rand() % 9 + 1;
 				x = rand() % 18 + 1;
 			}
@@ -45,7 +45,7 @@ EnemyManager::EnemyManager()
 	y = 0;
 }
 
-float EnemyManager::distanceFromPlayer(Player player)
+float EnemyManager::distanceFromPlayer(int playerPosX, int playerPosY)
 {
-	return abs(sqrt(pow((player.posX - x), 2) + pow((player.posY - y), 2)));
+	return abs(sqrt(pow((playerPosX - x), 2) + pow((playerPosY - y), 2)));
 }

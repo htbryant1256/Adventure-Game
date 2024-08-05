@@ -9,41 +9,41 @@ Enemy::Enemy(int x, int y)
 	srand(time(NULL));
 }
 
-void Enemy::update(OverWorldMap& overWorldMap, Player player)
+void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
 	if (updateDelay <= 0) {
-		if (distanceFromPlayer(player) <= seekingDistance) {
-			seekPlayer(overWorldMap, player);
+		if (distanceFromPlayer(playerPosX, playerPosY) <= seekingDistance) {
+			seekPlayer(overWorldMap, playerPosX, playerPosY);
 		}
 		else {
-			randomlyWalk(overWorldMap, player);
+			randomlyWalk(overWorldMap);
 		}
 	}
 		updateDelay--;
 }
 
-void Enemy::seekPlayer(OverWorldMap& overWorldMap, Player player)
+void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
-	if (player.posX > posX && overWorldMap.tileMap[posY][posX + 1] == 'g' && posX + 1 != player.posX) {
+	if (playerPosX > posX && overWorldMap.tileMap[posY][posX + 1] == 'g' && posX + 1 != playerPosX) {
 		posX += 1;
 		entityDirection.setRotation(-90);
 	}
-	else if (player.posX < posX && overWorldMap.tileMap[posY][posX - 1] == 'g' && posX +- 1 != player.posX) {
+	else if (playerPosX < posX && overWorldMap.tileMap[posY][posX - 1] == 'g' && posX +- 1 != playerPosX) {
 		posX -= 1;
 		entityDirection.setRotation(90);
 	}
-	if (player.posY > posY && overWorldMap.tileMap[posY + 1][posX] == 'g' && posY + 1 != player.posY) {
+	if (playerPosY > posY && overWorldMap.tileMap[posY + 1][posX] == 'g' && posY + 1 != playerPosY) {
 		posY += 1;
 		entityDirection.setRotation(0);
 	}
-	else if (player.posY < posY && overWorldMap.tileMap[posY - 1][posX] == 'g' && posY - 1 != player.posY) {
+	else if (playerPosY < posY && overWorldMap.tileMap[posY - 1][posX] == 'g' && posY - 1 != playerPosY) {
 		posY -= 1;
 		entityDirection.setRotation(180);
 	}
 	updateDelay = delay;
 }
 
-void Enemy::randomlyWalk(OverWorldMap& overWorldMap, Player player)
+void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 {
 	int movement = rand() % 4 + 1;
 
@@ -66,7 +66,7 @@ void Enemy::randomlyWalk(OverWorldMap& overWorldMap, Player player)
 	updateDelay = delay;
 }
 
-float Enemy::distanceFromPlayer(Player player)
+float Enemy::distanceFromPlayer(int playerPosX, int playerPosY)
 {
-	return abs(sqrt(pow((player.posX - posX), 2) + pow((player.posY - posY), 2)));
+	return abs(sqrt(pow((playerPosX - posX), 2) + pow((playerPosY - posY), 2)));
 }
