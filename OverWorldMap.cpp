@@ -58,8 +58,6 @@ void OverWorldMap::initMapArray()
 			mapArray[1][1][k][l] = map4[k][l];
 		}
 	}
-	
-
 }
 
 int OverWorldMap::getTileSize()
@@ -76,9 +74,8 @@ void OverWorldMap::loadMapLeft()
 			}
 		}
 		mapPosX -= 1;
+		newMapLoaded = true;
 	}
-
-
 }
 
 void OverWorldMap::loadMapRight()
@@ -90,6 +87,7 @@ void OverWorldMap::loadMapRight()
 			}
 		}
 		mapPosX += 1;
+		newMapLoaded = true;
 	}
 }
 
@@ -102,9 +100,8 @@ void OverWorldMap::loadMapUp()
 			}
 		}
 		mapPosY -= 1;
+		newMapLoaded = true;
 	}
-
-
 }
 
 void OverWorldMap::loadMapDown()
@@ -116,5 +113,6 @@ void OverWorldMap::loadMapDown()
 			}
 		}
 		mapPosY += 1;
+		newMapLoaded = true;
 	}
 }

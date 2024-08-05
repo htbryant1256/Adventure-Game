@@ -34,14 +34,14 @@ void Game::update()
 {
     pollEvents();
     player.update(overWorldMap);
-    enemy.update(overWorldMap, player);
+    enemyManager.update(overWorldMap, player);
 }
 
 void Game::render()
 {
     window->clear(sf::Color::Black);
     overWorldMap.render(window);
-    enemy.render(window, overWorldMap);
+    enemyManager.render(window, overWorldMap);
     player.render(window, overWorldMap);
     window->display();
 }

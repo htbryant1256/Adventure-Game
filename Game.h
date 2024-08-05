@@ -8,7 +8,7 @@
 
 #include "OverWorldMap.h"
 #include "Player.h"
-#include "Enemy.h"
+#include "EnemyManager.h"
 class Game
 {
 private:
@@ -18,7 +18,7 @@ private:
 	
 	OverWorldMap overWorldMap;
 	Player player;
-	Enemy enemy;
+	EnemyManager enemyManager;
 	int windowHeight;
 	int windowWidth;
 

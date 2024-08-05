@@ -26,6 +26,7 @@ public:
 	void loadMapRight();
 	void loadMapUp();
 	void loadMapDown();
+	bool newMapLoaded = false;
 private:
 	int mapPosX, mapPosY;
 	char map1[10][19] = {
