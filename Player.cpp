@@ -6,30 +6,29 @@ Player::Player()
 	posY = 1;
 	delay = 5;
 	//entity.setFillColor(sf::Color(100,150,100));
-	/*
-	sf::Texture playerTexture;
-	if (!playerTexture.loadFromFile("./Graphics/Tiles/doorTile.png"))
+	
+	
+	if (!playerTexture.loadFromFile("./Graphics/Tiles/playerTile.png"))
 	{
-		printf("Error Loading doorTile.png\n");
+		printf("Error Loading playerTile.png\n");
 	}
-	entity.setTexture(&playerTexture, false);*/
+
+	playerSprite.setTexture(&playerTexture, false);
+
+	playerDirectionRect.setFillColor(sf::Color(200, 0, 0));
+	playerDirectionRect.setSize(sf::Vector2f(10, 25));
+	
 }
 
 void Player::updateCollisions(OverWorldMap& overWorldMap)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		if (overWorldMap.tileMap[posY][posX + 1] != 's' && posY + 1 != 38) {
-			/*
-			for (auto& element : enemyManager.enemyVector) {
-				if (((element.posX == posX) || (element.posX == posX - 1) || (element.posX == posX + 1)) && (element.posY == posY - 1)) {
-					printf("HIT NORTH\n");
-				}
-			}*/
 			posX += 1;
 			updateDelay = delay;
 		}
 		direction = EAST;
-		entityDirection.setRotation(-90);
+		playerDirectionRect.setRotation(-90);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		if (overWorldMap.tileMap[posY][posX - 1] != 's' && posY - 1 != -1) {
@@ -37,7 +36,7 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 			updateDelay = delay;
 		}
 		direction = WEST;
-		entityDirection.setRotation(90);
+		playerDirectionRect.setRotation(90);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 		if (overWorldMap.tileMap[posY + 1][posX] != 's' && posY + 1 != 20) {
@@ -45,7 +44,7 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 			updateDelay = delay;
 		}
 		direction = SOUTH;
-		entityDirection.setRotation(0);
+		playerDirectionRect.setRotation(0);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		if (overWorldMap.tileMap[posY - 1][posX] != 's' && posY - 1 != -1) {
@@ -53,7 +52,7 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 			updateDelay = delay;
 		}
 		direction = NORTH;
-		entityDirection.setRotation(180);
+		playerDirectionRect.setRotation(180);
 	}
 }
 
@@ -92,4 +91,13 @@ void Player::update(OverWorldMap& overWorldMap)
 	//Screen Change Logic
 	updateScreenChange(overWorldMap);
 	
+}
+
+void Player::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)
+{
+	playerSprite.setSize(sf::Vector2f(overWorldMap->getTileSize(), overWorldMap->getTileSize()));
+	playerSprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap->getTileSize()), 40 + (posY * overWorldMap->getTileSize())));
+	playerDirectionRect.setPosition(sf::Vector2f(playerSprite.getPosition().x + overWorldMap->getTileSize() / 2, playerSprite.getPosition().y + overWorldMap->getTileSize() / 2));
+	window->draw(playerSprite);
+	window->draw(playerDirectionRect);
 }

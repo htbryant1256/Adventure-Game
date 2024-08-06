@@ -9,10 +9,7 @@ class Entity
 public:
 	int posY;
 	int posX;
-	void render(sf::RenderWindow* window, OverWorldMap* overWorldMap);
 
-	sf::RectangleShape entity;
-	sf::RectangleShape entityDirection;
 	int delay;
 	int updateDelay = delay;
 
