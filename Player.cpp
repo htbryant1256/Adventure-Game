@@ -99,5 +99,5 @@ void Player::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)
 	playerSprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap->getTileSize()), 40 + (posY * overWorldMap->getTileSize())));
 	playerDirectionRect.setPosition(sf::Vector2f(playerSprite.getPosition().x + overWorldMap->getTileSize() / 2, playerSprite.getPosition().y + overWorldMap->getTileSize() / 2));
 	window->draw(playerSprite);
-	window->draw(playerDirectionRect);
+	//window->draw(playerDirectionRect);
 }

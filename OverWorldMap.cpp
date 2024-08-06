@@ -27,7 +27,7 @@ void OverWorldMap::initOverWorldMap()
 	mapPosX = 0;
 	mapPosY = 0;
 	sf::RectangleShape tile;
-	//tile.setOutlineThickness(1);
+	tile.setFillColor(sf::Color(150, 150, 150));
 	tile.setSize(sf::Vector2f(tileSize, tileSize));
 	for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < 38; j++) {

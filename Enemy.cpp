@@ -4,14 +4,18 @@ Enemy::Enemy(int x, int y)
 {
 	posX = x;
 	posY = y;
-	delay = 10;
+	delay = 15;
 	seekingDistance = 10;
 	srand(time(NULL));
 	health = 5;
 
-	if (!enemyTexture.loadFromFile("./Graphics/Tiles/playerTile.png"))
+	if (!enemyTexture.loadFromFile("./Graphics/Tiles/enemyTile.png"))
 	{
-		printf("Error Loading playerTile.png\n");
+		printf("Error Loading enemyTile.png\n");
+	}
+	if (!enemyTextureRight.loadFromFile("./Graphics/Tiles/enemyTileRight.png"))
+	{
+		printf("Error Loading enemyTileRight.png\n");
 	}
 
 	enemySprite.setTexture(&enemyTexture, false);
@@ -32,30 +36,35 @@ void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 	}
 	updateDelay--;
 	if (hit) {
-		enemySprite.setFillColor(sf::Color(250, 250, 250));
+		enemySprite.setFillColor(sf::Color(100,100,100));
 	}
 	else {
-		enemySprite.setFillColor(sf::Color(150, 100, 100));
+		enemySprite.setFillColor(sf::Color::White);
 	}
 }
 
 void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
+	enemySprite.setTexture(&enemyTextureRight, false);
 	if (playerPosX > posX && overWorldMap.tileMap[posY][posX + 1] == 'g' && posX + 1 != playerPosX) {
 		posX += 1;
 		enemyDirectionRect.setRotation(-90);
+		enemySprite.setTexture(&enemyTextureRight, false);
 	}
 	else if (playerPosX < posX && overWorldMap.tileMap[posY][posX - 1] == 'g' && posX +- 1 != playerPosX) {
 		posX -= 1;
 		enemyDirectionRect.setRotation(90);
+		enemySprite.setTexture(&enemyTexture, false);
 	}
 	if (playerPosY > posY && overWorldMap.tileMap[posY + 1][posX] == 'g' && posY + 1 != playerPosY) {
 		posY += 1;
 		enemyDirectionRect.setRotation(0);
+		enemySprite.setTexture(&enemyTexture, false);
 	}
 	else if (playerPosY < posY && overWorldMap.tileMap[posY - 1][posX] == 'g' && posY - 1 != playerPosY) {
 		posY -= 1;
 		enemyDirectionRect.setRotation(180);
+		enemySprite.setTexture(&enemyTextureRight, false);
 	}
 	updateDelay = delay;
 }
@@ -63,22 +72,26 @@ void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPos
 void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 {
 	int movement = rand() % 4 + 1;
-
+	enemySprite.setTexture(&enemyTextureRight, false);
 	if (movement == 1 && overWorldMap.tileMap[posY][posX + 1] == 'g') {
 		posX += 1;
 		enemyDirectionRect.setRotation(-90);
+		enemySprite.setTexture(&enemyTextureRight, false);
 	}
 	if (movement == 2 && overWorldMap.tileMap[posY][posX - 1] == 'g') {
 		posX -= 1;
 		enemyDirectionRect.setRotation(90);
+		enemySprite.setTexture(&enemyTexture, false);
 	}
 	if (movement == 3 && overWorldMap.tileMap[posY + 1][posX] == 'g') {
 		posY += 1;
 		enemyDirectionRect.setRotation(0);
+		enemySprite.setTexture(&enemyTexture, false);
 	}
 	if (movement == 4 && overWorldMap.tileMap[posY - 1][posX] == 'g') {
 		posY -= 1;
 		enemyDirectionRect.setRotation(180);
+		enemySprite.setTexture(&enemyTextureRight, false);
 	}
 	updateDelay = delay;
 }
@@ -88,6 +101,7 @@ void Enemy::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)
 	enemySprite.setSize(sf::Vector2f(overWorldMap->getTileSize(), overWorldMap->getTileSize()));
 	enemySprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap->getTileSize()), 40 + (posY * overWorldMap->getTileSize())));
 	enemyDirectionRect.setPosition(sf::Vector2f(enemySprite.getPosition().x + overWorldMap->getTileSize() / 2, enemySprite.getPosition().y + overWorldMap->getTileSize() / 2));
+	
 	window->draw(enemySprite);
-	window->draw(enemyDirectionRect);
+	//window->draw(enemyDirectionRect);
 }

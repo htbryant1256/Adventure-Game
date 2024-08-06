@@ -18,6 +18,7 @@ private:
 
     sf::RectangleShape enemySprite;
     sf::Texture enemyTexture;
+    sf::Texture enemyTextureRight;
     sf::RectangleShape enemyDirectionRect;
 };
 
