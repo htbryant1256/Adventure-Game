@@ -14,7 +14,6 @@ public:
 private:
 	int x;
 	int y;
-	CommonMathFunctions commonMathFunctions;
 
 };
 

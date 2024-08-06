@@ -13,8 +13,6 @@ public:
 private:
     void seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPosY);
     void randomlyWalk(OverWorldMap& overWorldMap);
-    
-    CommonMathFunctions commonMathFunctions;
     int seekingDistance;
 };
 

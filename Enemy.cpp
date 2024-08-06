@@ -14,8 +14,8 @@ Enemy::Enemy(int x, int y)
 void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
 	if (updateDelay <= 0) {
-		printf("distance: %f\n", commonMathFunctions.distanceFormula(playerPosX, posX, playerPosY, posY));
-		if (commonMathFunctions.distanceFormula(playerPosX, posX, playerPosY, posY) <= seekingDistance) {
+		printf("distance: %f\n", CommonMathFunctions::distanceFormula(playerPosX, posX, playerPosY, posY));
+		if (CommonMathFunctions::distanceFormula(playerPosX, posX, playerPosY, posY) <= seekingDistance) {
 			seekPlayer(overWorldMap, playerPosX, playerPosY);
 		}
 		else {

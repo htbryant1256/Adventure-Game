@@ -26,11 +26,11 @@ private:
 
 	void initVariables();
 	void initWindow();
-
+	void pollEvents();
 public:
 	Game();
 	~Game();
-	void pollEvents();
+	
 	void update();
 	void render();
 };

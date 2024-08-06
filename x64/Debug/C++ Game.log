@@ -1,3 +1,12 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (C++ Game.vcxproj, Krabby Clicker.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  CommonMathFunctions.cpp
+C:\Users\henry\source\repos\Adventure_Game\CommonMathFunctions.cpp(6,15): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Enemy.cpp
+C:\Users\henry\source\repos\Adventure_Game\Enemy.cpp(10,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  EnemyManager.cpp
+C:\Users\henry\source\repos\Adventure_Game\EnemyManager.cpp(56,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   EnemyPlayerInteraction.cpp
+  Game.cpp
+  Main.cpp
+  Generating Code...
   C++ Game.vcxproj -> C:\Users\henry\source\repos\Adventure_Game\x64\Debug\Adventure Game.exe

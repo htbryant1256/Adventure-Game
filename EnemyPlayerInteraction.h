@@ -15,6 +15,6 @@ private:
 	int delay = 10;
 	int attackRange = 4;
 	void attackEnemy(EnemyManager& enemyManager, Player player);
-	CommonMathFunctions commonMathFunctions;
+
 };
 
