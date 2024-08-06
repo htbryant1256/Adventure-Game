@@ -38,6 +38,13 @@ public:
 	void loadMapDown();
 	bool newMapLoaded = false;
 private:
+	void loadTextures();
+	sf::Texture stoneTexture;
+
+	sf::Texture grassTexture;
+
+	sf::Texture doorTexture;
+
 	char mapArray[2][2][20][38];
 
 	int tileSize = 50;

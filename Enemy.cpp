@@ -14,7 +14,6 @@ Enemy::Enemy(int x, int y)
 void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
 	if (updateDelay <= 0) {
-		printf("distance: %f\n", CommonMathFunctions::distanceFormula(playerPosX, posX, playerPosY, posY));
 		if (CommonMathFunctions::distanceFormula(playerPosX, posX, playerPosY, posY) <= seekingDistance) {
 			seekPlayer(overWorldMap, playerPosX, playerPosY);
 		}
@@ -29,8 +28,6 @@ void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 	else {
 		entity.setFillColor(sf::Color(150, 100, 100));
 	}
-
-
 }
 
 void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
@@ -76,4 +73,3 @@ void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 	}
 	updateDelay = delay;
 }
-

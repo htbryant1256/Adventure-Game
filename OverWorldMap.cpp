@@ -2,16 +2,18 @@
 
 void OverWorldMap::render(sf::RenderWindow* window)
 {
+
+
 	for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < 38; j++) {
 			if (tileMap[i][j] == 'g') {
-				objectTileMap[i][j].setFillColor(sf::Color(100,200,100));
+				objectTileMap[i][j].setTexture(&grassTexture, false);
 			}
 			else if (tileMap[i][j] == 's') {
-				objectTileMap[i][j].setFillColor(sf::Color(100, 100, 100));
+				objectTileMap[i][j].setTexture(&stoneTexture,false);
 			}
 			else if (tileMap[i][j] == 'd') {
-				objectTileMap[i][j].setFillColor(sf::Color(200, 100, 100));
+				objectTileMap[i][j].setTexture(&doorTexture, false);
 			}
 			window->draw(objectTileMap[i][j]);
 		}
@@ -20,19 +22,35 @@ void OverWorldMap::render(sf::RenderWindow* window)
 
 void OverWorldMap::initOverWorldMap()
 {
+	loadTextures();
 	initMapArray();
 	mapPosX = 0;
 	mapPosY = 0;
 	sf::RectangleShape tile;
-	tile.setFillColor(sf::Color::Black);
-	tile.setOutlineColor(sf::Color::White);
-	tile.setOutlineThickness(1);
+	//tile.setOutlineThickness(1);
 	tile.setSize(sf::Vector2f(tileSize, tileSize));
 	for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < 38; j++) {
 			tile.setPosition(sf::Vector2f(10 + (j * tileSize), 40 + (i * tileSize)));
 			objectTileMap[i][j] = tile;
 		}
+	}
+}
+
+void OverWorldMap::loadTextures() {
+	if (!stoneTexture.loadFromFile("./Graphics/Tiles/stoneTile.png"))
+	{
+		printf("Error Loading stoneTile.png\n");
+	}
+
+	if (!grassTexture.loadFromFile("./Graphics/Tiles/grassTile.png"))
+	{
+		printf("Error Loading grassTile.png\n");
+	}
+
+	if (!doorTexture.loadFromFile("./Graphics/Tiles/doorTile.png"))
+	{
+		printf("Error Loading doorTile.png\n");
 	}
 }
 

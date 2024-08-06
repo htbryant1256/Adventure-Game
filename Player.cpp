@@ -5,7 +5,14 @@ Player::Player()
 	posX = 1;
 	posY = 1;
 	delay = 5;
-	entity.setFillColor(sf::Color(100,150,100));
+	//entity.setFillColor(sf::Color(100,150,100));
+	/*
+	sf::Texture playerTexture;
+	if (!playerTexture.loadFromFile("./Graphics/Tiles/doorTile.png"))
+	{
+		printf("Error Loading doorTile.png\n");
+	}
+	entity.setTexture(&playerTexture, false);*/
 }
 
 void Player::updateCollisions(OverWorldMap& overWorldMap)
