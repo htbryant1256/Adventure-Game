@@ -11,35 +11,32 @@ void EnemyPlayerInteraction::update(EnemyManager& enemyManager, Player player)
 void EnemyPlayerInteraction::attackEnemy(EnemyManager& enemyManager, Player player)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
-		switch (player.direction) {
-		case player.NORTH:
-			for (auto& element : enemyManager.enemyVector) {
-				if (((element.posX == player.posX) || (element.posX == player.posX - 1) || (element.posX == player.posX + 1)) && (element.posY == player.posY - 1)) {
+		for (auto& element : enemyManager.enemyVector) {
+			switch (player.direction) {
+			case player.NORTH:
+				if ((commonMathFunctions.distanceFormula(element.posX, player.posX, element.posY, player.posY) <= attackRange && element.posY < player.posY)) {
 					element.hit = true;
 				}
-			}
-			break;
-		case player.EAST:
-			for (auto& element : enemyManager.enemyVector) {
-				if (((element.posY == player.posY) || (element.posY == player.posY - 1) || (element.posY == player.posY + 1)) && (element.posX == player.posX + 1)) {
+				break;
+			case player.EAST:
+				if ((commonMathFunctions.distanceFormula(element.posX, player.posX, element.posY, player.posY) <= attackRange && element.posX > player.posX)) {
 					element.hit = true;
 				}
-			}
-			break;
-		case player.SOUTH:
-			for (auto& element : enemyManager.enemyVector) {
-				if (((element.posX == player.posX) || (element.posX == player.posX - 1) || (element.posX == player.posX + 1)) && (element.posY == player.posY + 1)) {
+				break;
+			case player.SOUTH:
+				if ((commonMathFunctions.distanceFormula(element.posX, player.posX, element.posY, player.posY) <= attackRange && element.posY > player.posY)) {
 					element.hit = true;
 				}
-			}
-			break;
-		case player.WEST:
-			for (auto& element : enemyManager.enemyVector) {
-				if (((element.posY == player.posY) || (element.posY == player.posY - 1) || (element.posY == player.posY + 1)) && (element.posX == player.posX - 1)) {
+				break;
+			case player.WEST:
+				if ((commonMathFunctions.distanceFormula(element.posX, player.posX, element.posY, player.posY) <= attackRange && element.posX < player.posX)) {
 					element.hit = true;
 				}
+				break;
 			}
-			break;
+			if (commonMathFunctions.distanceFormula(element.posX, player.posX, element.posY, player.posY) == 0) {
+				element.hit = true;
+			}
 		}
 		attackDelay = delay;
 	}
