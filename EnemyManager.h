@@ -1,7 +1,8 @@
 #pragma once
 #include "Enemy.h"
 #include <stdlib.h>     
-#include <time.h>   
+#include <time.h>
+#include "CommonMathFunctions.h"
 class EnemyManager
 {
 public:
@@ -13,8 +14,7 @@ public:
 private:
 	int x;
 	int y;
-	float distanceFromPlayer(int playerPosX, int playerPosY);
-	
+	CommonMathFunctions commonMathFunctions;
 
 };
 

@@ -14,7 +14,8 @@ Enemy::Enemy(int x, int y)
 void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
 	if (updateDelay <= 0) {
-		if (distanceFromPlayer(playerPosX, playerPosY) <= seekingDistance) {
+		printf("distance: %f\n", commonMathFunctions.distanceFormula(playerPosX, posX, playerPosY, posY));
+		if (commonMathFunctions.distanceFormula(playerPosX, posX, playerPosY, posY) <= seekingDistance) {
 			seekPlayer(overWorldMap, playerPosX, playerPosY);
 		}
 		else {
@@ -76,7 +77,3 @@ void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 	updateDelay = delay;
 }
 
-float Enemy::distanceFromPlayer(int playerPosX, int playerPosY)
-{
-	return abs(sqrt(pow((playerPosX - posX), 2) + pow((playerPosY - posY), 2)));
-}

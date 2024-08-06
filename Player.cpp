@@ -74,56 +74,12 @@ void Player::updateScreenChange(OverWorldMap& overWorldMap)
 	}
 }
 
-void Player::attackEnemy(EnemyManager& enemyManager)
-{
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
-		printf("Attack!\n");
-		switch (direction){
-			case NORTH:
-				for (auto& element : enemyManager.enemyVector) {
-					if (((element.posX == posX) || (element.posX == posX - 1) || (element.posX == posX + 1)) && (element.posY == posY - 1)) {
-						printf("HIT NORTH\n");
-						element.hit = true;
-					}
-				}
-				break;
-			case EAST:
-				for (auto& element : enemyManager.enemyVector) {
-					if (((element.posY == posY) || (element.posY == posY - 1) || (element.posY == posY + 1)) && (element.posX == posX + 1)) {
-						printf("HIT EAST \n");
-						element.hit = true;
-					}
-				}
-				break;
-			case SOUTH:
-				for (auto& element : enemyManager.enemyVector) {
-					if (((element.posX == posX) || (element.posX == posX - 1) || (element.posX == posX + 1)) && (element.posY == posY + 1)) {
-						printf("HIT SOUTH\n");
-						element.hit = true;
-					}
-				}
-				break;
-			case WEST:
-				for (auto& element : enemyManager.enemyVector) {
-					if(((element.posY == posY) || (element.posY == posY - 1) || (element.posY == posY + 1)) && (element.posX == posX - 1)) {
-						printf("HIT WEST\n");
-						element.hit = true;
-					}
-				}
-				break;
-
-		}
-		updateDelay = delay;
-	}
-}
-
-void Player::update(OverWorldMap& overWorldMap, EnemyManager& enemyManager)
+void Player::update(OverWorldMap& overWorldMap)
 {
 	if (updateDelay <= 0) {
 
 		//Stone Collisions
 		updateCollisions(overWorldMap);
-		attackEnemy(enemyManager);
 	}
 	updateDelay--;
 	//Screen Change Logic

@@ -39,16 +39,14 @@ void EnemyManager::populateMap(OverWorldMap& overWorldMap, int playerPosX, int p
 			y = rand() % 19 + 1;
 			x = rand() % 37 + 1;
 
-			while (overWorldMap.tileMap[y][x] != 'g' || distanceFromPlayer(playerPosX, playerPosY) < 10) {
+			while (overWorldMap.tileMap[y][x] != 'g' || commonMathFunctions.distanceFormula(playerPosX,x, playerPosY,y) < 10) {
 				y = rand() % 19 + 1;
 				x = rand() % 37 + 1;
 			}
 			Enemy enemy(x, y);
 			enemyVector.push_back(enemy);
 		}
-		
-
-
+	
 		overWorldMap.newMapLoaded = false;
 	}
 }
@@ -58,9 +56,5 @@ EnemyManager::EnemyManager()
 	srand(time(NULL));
 	x = 0;
 	y = 0;
-}
-
-float EnemyManager::distanceFromPlayer(int playerPosX, int playerPosY)
-{
-	return abs(sqrt(pow((playerPosX - x), 2) + pow((playerPosY - y), 2)));
+	
 }

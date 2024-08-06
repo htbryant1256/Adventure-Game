@@ -2,7 +2,8 @@
 #include "Entity.h"
 #include "OverWorldMap.h"
 #include <stdlib.h>     
-#include <time.h>   
+#include <time.h>
+#include "CommonMathFunctions.h"
 class Enemy :
     public Entity
 {
@@ -12,8 +13,8 @@ public:
 private:
     void seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPosY);
     void randomlyWalk(OverWorldMap& overWorldMap);
-    float distanceFromPlayer(int playerPosX, int playerPosY);
-
+    
+    CommonMathFunctions commonMathFunctions;
     int seekingDistance;
 };
 
