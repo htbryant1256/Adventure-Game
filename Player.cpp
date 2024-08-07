@@ -111,23 +111,23 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 
 void Player::updateScreenChange(OverWorldMap& overWorldMap)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && overWorldMap.tileMap[posY][posX] == 'd' && posX == 37) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && overWorldMap.tileMap[posY][posX] == 'd' && posX == 28) {
 		posX = 0;
 		overWorldMap.loadMapRight();
 		updateDelay = delay;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && overWorldMap.tileMap[posY][posX] == 'd' && posX == 0) {
-		posX = 37;
+		posX = 28;
 		overWorldMap.loadMapLeft();
 		updateDelay = delay;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && overWorldMap.tileMap[posY][posX] == 'd' && posY == 19) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && overWorldMap.tileMap[posY][posX] == 'd' && posY == 14) {
 		posY = 0;
 		overWorldMap.loadMapDown();
 		updateDelay = delay;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && overWorldMap.tileMap[posY][posX] == 'd' && posY == 0) {
-		posY = 19;
+		posY = 14;
 		overWorldMap.loadMapUp();
 		updateDelay = delay;
 	}

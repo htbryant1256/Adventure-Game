@@ -36,12 +36,12 @@ void EnemyManager::populateMap(OverWorldMap& overWorldMap, int playerPosX, int p
 		enemyVector.clear();
 		int numberOfEnemies = rand() % 3 + 1;
 		for (int i = 0; i < numberOfEnemies; i++) {
-			y = rand() % 19 + 1;
-			x = rand() % 37 + 1;
+			y = rand() % 15 + 1;
+			x = rand() % 28 + 1;
 
 			while (overWorldMap.tileMap[y][x] != 'g' || CommonMathFunctions::distanceFormula(playerPosX,x, playerPosY,y) < 10) {
-				y = rand() % 19 + 1;
-				x = rand() % 37 + 1;
+				y = rand() % 15 + 1;
+				x = rand() % 28 + 1;
 			}
 			Enemy enemy(x, y);
 			enemyVector.push_back(enemy);
