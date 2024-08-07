@@ -1,83 +1,135 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (C++ Game.vcxproj, Krabby Clicker.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  CommonMathFunctions.cpp
+C:\Users\henry\source\repos\Adventure_Game\CommonMathFunctions.cpp(6,15): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Enemy.cpp
+C:\Users\henry\source\repos\Adventure_Game\Enemy.cpp(9,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Enemy.cpp(26,87): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\Enemy.cpp(26,59): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\Enemy.cpp(27,84): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\Enemy.cpp(27,42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  EnemyManager.cpp
+C:\Users\henry\source\repos\Adventure_Game\EnemyManager.cpp(56,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  EnemyPlayerInteraction.cpp
+  Entity.cpp
+  Game.cpp
+  Main.cpp
+  OverWorldMap.cpp
+C:\Users\henry\source\repos\Adventure_Game\OverWorldMap.cpp(31,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\OverWorldMap.cpp(31,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\OverWorldMap.cpp(34,58): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\OverWorldMap.cpp(34,37): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
   Player.cpp
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(138,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(145,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(138,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(145,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(163,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(170,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(163,37): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(170,37): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(188,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(195,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(188,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(195,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(211,51): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(218,51): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(211,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(218,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(234,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(241,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(255,37): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(262,37): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(278,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(285,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(301,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(308,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(330,90): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(337,90): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(330,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(337,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(332,87): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(339,87): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\henry\source\repos\Adventure_Game\Player.cpp(332,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(339,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
+  Generating Code...
   C++ Game.vcxproj -> C:\Users\henry\source\repos\Adventure_Game\x64\Debug\Adventure Game.exe

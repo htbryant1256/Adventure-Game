@@ -60,6 +60,13 @@ Player::Player()
 
 void Player::updateCollisions(OverWorldMap& overWorldMap)
 {
+	/*
+	
+	//TODO Add else if tree for diagonal movement handeling with the new animations.
+	
+	*/
+
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		if (overWorldMap.tileMap[posY][posX + 1] != 's' && posY + 1 != 38) {
 			//posX += 1;
