@@ -13,6 +13,14 @@ private:
     sf::RectangleShape playerSprite;
     sf::Texture playerTexture;
     sf::Texture playerTextureLeft;
+    sf::Texture playerTextureLeft2;
+    sf::Texture playerTextureLeft3;
+    sf::Texture playerTextureLeft4;
+
+    sf::Texture playerTextureRight2;
+    sf::Texture playerTextureRight3;
+    sf::Texture playerTextureRight4;
+
     sf::RectangleShape playerDirectionRect;
     bool moveRight = false;
     bool moveLeft = false;
