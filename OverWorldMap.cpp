@@ -76,6 +76,14 @@ void OverWorldMap::initMapArray()
 			mapArray[1][1][k][l] = map4[k][l];
 		}
 	}
+	for (int k = 0; k < 15; k++) {
+		for (int l = 0; l < 29; l++) {
+			tileMap[k][l] = mapArray[0][0][k][l];
+		}
+	}
+
+
+
 }
 
 int OverWorldMap::getTileSize()

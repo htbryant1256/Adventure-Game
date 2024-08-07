@@ -68,44 +68,57 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		if (overWorldMap.tileMap[posY][posX + 1] != 's' && posY + 1 != 38) {
-			//posX += 1;
+		if (overWorldMap.tileMap[posY][posX + 1] != 's' && posY + 1 != 28) {
 			moveRight = true;
 			updateDelay = delay;
 		}
-		//playerSprite.setTexture(&playerTexture, false);
 		direction = EAST;
 		playerDirectionRect.setRotation(-90);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		if (overWorldMap.tileMap[posY][posX - 1] != 's' && posY - 1 != -1) {
-			//posX -= 1;
 			moveLeft = true;
 			updateDelay = delay;
 		}
-	//	playerSprite.setTexture(&playerTextureLeft, false);
 		direction = WEST;
 		playerDirectionRect.setRotation(90);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		if (overWorldMap.tileMap[posY + 1][posX] != 's' && posY + 1 != 20) {
-			//posY += 1;
+		if (overWorldMap.tileMap[posY + 1][posX] != 's' && posY + 1 != 15) {
 			moveDown = true;
 			updateDelay = delay;
 		}
-		//playerSprite.setTexture(&playerTexture, false);
 		direction = SOUTH;
 		playerDirectionRect.setRotation(0);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		if (overWorldMap.tileMap[posY - 1][posX] != 's' && posY - 1 != -1) {
-			//posY -= 1;
 			moveUp = true;
 			updateDelay = delay;
 		}
-		//playerSprite.setTexture(&playerTextureLeft, false);
 		direction = NORTH;
 		playerDirectionRect.setRotation(180);
+
+	}
+
+	if (moveDown && moveLeft) {
+		if (overWorldMap.tileMap[posY + 1][posX - 1] == 's') {
+			moveLeft = false;
+		}
+	}if (moveDown && moveRight) {
+		if (overWorldMap.tileMap[posY + 1][posX + 1] == 's') {
+			moveRight = false;
+		}
+	}
+	if (moveUp && moveRight) {
+		if (overWorldMap.tileMap[posY - 1][posX + 1] == 's') {
+			moveRight = false;
+		}
+	}
+	if (moveUp && moveLeft) {
+		if (overWorldMap.tileMap[posY - 1][posX - 1] == 's') {
+			moveLeft = false;
+		}
 	}
 }
 
@@ -133,6 +146,39 @@ void Player::updateScreenChange(OverWorldMap& overWorldMap)
 	}
 }
 
+void Player::animateLeft()
+{
+	if (animationTimer == 0) {
+		playerSprite.setTexture(&playerTextureLeft, false);
+	}
+	else if (animationTimer < (delay / 4)) {
+		playerSprite.setTexture(&playerTextureLeft2, false);
+	}
+	else if (animationTimer < 2 * (delay / 4)) {
+		playerSprite.setTexture(&playerTextureLeft3, false);
+	}
+	else if (animationTimer < 3 * (delay / 4)) {
+		playerSprite.setTexture(&playerTextureLeft2, false);
+	}
+}
+
+void Player::animateRight()
+{
+	if (animationTimer == 0) {
+		playerSprite.setTexture(&playerTexture, false);
+	}
+	else if (animationTimer < (delay / 4)) {
+		playerSprite.setTexture(&playerTextureRight2, false);
+	}
+	else if (animationTimer < 2 * (delay / 4)) {
+		playerSprite.setTexture(&playerTextureRight3, false);
+	}
+	else if (animationTimer < 3 * (delay / 4)) {
+		playerSprite.setTexture(&playerTextureRight4, false);
+	}
+
+}
+
 void Player::update(OverWorldMap& overWorldMap)
 {
 	if (updateDelay <= 0) {
@@ -144,18 +190,7 @@ void Player::update(OverWorldMap& overWorldMap)
 		animationTimer--;
 		playerSprite.move(sf::Vector2f(50/delay, -50 / delay));
 
-		if (animationTimer == 0) {
-			playerSprite.setTexture(&playerTexture, false);
-		}
-		else if (animationTimer < (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight2, false);
-		}
-		else if (animationTimer < 2 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight3, false);
-		}
-		else if (animationTimer < 3 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight4, false);
-		}
+		animateRight();
 
 		if (animationTimer <= 0) {
 			moveRight = false;
@@ -169,18 +204,7 @@ void Player::update(OverWorldMap& overWorldMap)
 		animationTimer--;
 		playerSprite.move(sf::Vector2f(50 / delay, 50 / delay));
 
-		if (animationTimer == 0) {
-			playerSprite.setTexture(&playerTexture, false);
-		}
-		else if (animationTimer < (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight2, false);
-		}
-		else if (animationTimer < 2 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight3, false);
-		}
-		else if (animationTimer < 3 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight4, false);
-		}
+		animateRight();
 
 		if (animationTimer <= 0) {
 			moveRight = false;
@@ -193,18 +217,7 @@ void Player::update(OverWorldMap& overWorldMap)
 	else if (moveLeft && moveDown) {
 		animationTimer--;
 		playerSprite.move(sf::Vector2f(-50 / delay, 50 / delay));
-		if (animationTimer == 0) {
-			playerSprite.setTexture(&playerTextureLeft, false);
-		}
-		else if (animationTimer < (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft2, false);
-		}
-		else if (animationTimer < 2 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft3, false);
-		}
-		else if (animationTimer < 3 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft2, false);
-		}
+		animateLeft();
 		if (animationTimer <= 0) {
 			moveLeft = false;
 			moveDown = false;
@@ -216,18 +229,7 @@ void Player::update(OverWorldMap& overWorldMap)
 	else if (moveLeft && moveUp) {
 		animationTimer--;
 		playerSprite.move(sf::Vector2f(-50 / delay, -50 / delay));
-		if (animationTimer == 0) {
-			playerSprite.setTexture(&playerTextureLeft, false);
-		}
-		else if (animationTimer < (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft2, false);
-		}
-		else if (animationTimer < 2 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft3, false);
-		}
-		else if (animationTimer < 3 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft2, false);
-		}
+		animateLeft();
 		if (animationTimer <= 0) {
 			moveLeft = false;
 			moveUp = false;
@@ -240,15 +242,7 @@ void Player::update(OverWorldMap& overWorldMap)
 		animationTimer--;
 		playerSprite.move(sf::Vector2f(-50 / delay, 0));
 		
-		if (animationTimer == 0) {
-			playerSprite.setTexture(&playerTextureLeft, false);
-		}else if (animationTimer < (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft2, false);
-		}else if (animationTimer < 2 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft3, false);
-		}else if (animationTimer < 3 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft2, false);
-		}
+		animateLeft();
 		
 
 		if (animationTimer <= 0) {
@@ -261,18 +255,7 @@ void Player::update(OverWorldMap& overWorldMap)
 		animationTimer--;
 		playerSprite.move(sf::Vector2f(50 / delay, 0));
 
-		if (animationTimer == 0) {
-			playerSprite.setTexture(&playerTexture, false);
-		}
-		else if (animationTimer < (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight2, false);
-		}
-		else if (animationTimer < 2 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight3, false);
-		}
-		else if (animationTimer < 3 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight4, false);
-		}
+		animateRight();
 
 		if (animationTimer <= 0) {
 			moveRight = false;
@@ -284,18 +267,7 @@ void Player::update(OverWorldMap& overWorldMap)
 		animationTimer--;
 		playerSprite.move(sf::Vector2f(0, -50 / delay));
 
-		if (animationTimer == 0) {
-			playerSprite.setTexture(&playerTextureLeft, false);
-		}
-		else if (animationTimer < (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft2, false);
-		}
-		else if (animationTimer < 2 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft3, false);
-		}
-		else if (animationTimer < 3 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureLeft2, false);
-		}
+		animateLeft();
 
 		if (animationTimer <= 0) {
 			moveUp = false;
@@ -307,18 +279,7 @@ void Player::update(OverWorldMap& overWorldMap)
 		animationTimer--;
 		playerSprite.move(sf::Vector2f(0, 50 / delay));
 
-		if (animationTimer == 0) {
-			playerSprite.setTexture(&playerTexture, false);
-		}
-		else if (animationTimer < (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight2, false);
-		}
-		else if (animationTimer < 2 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight3, false);
-		}
-		else if (animationTimer < 3 * (delay / 4)) {
-			playerSprite.setTexture(&playerTextureRight4, false);
-		}
+		animateRight();
 
 		if (animationTimer <= 0) {
 			moveDown = false;

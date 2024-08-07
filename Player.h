@@ -10,6 +10,9 @@ public:
 private:
     void updateCollisions(OverWorldMap& overWorldMap);
     void updateScreenChange(OverWorldMap& overWorldMap);
+    void animateLeft();
+    void animateRight();
+
     sf::RectangleShape playerSprite;
     sf::Texture playerTexture;
     sf::Texture playerTextureLeft;
