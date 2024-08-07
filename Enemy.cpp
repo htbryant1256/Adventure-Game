@@ -4,24 +4,12 @@ Enemy::Enemy(int x, int y)
 {
 	posX = x;
 	posY = y;
-	delay = 15;
+	delay = 25;
 	seekingDistance = 10;
 	srand(time(NULL));
 	health = 5;
 
-	if (!enemyTexture.loadFromFile("./Graphics/Tiles/enemyTile.png"))
-	{
-		printf("Error Loading enemyTile.png\n");
-	}
-	if (!enemyTextureRight.loadFromFile("./Graphics/Tiles/enemyTileRight.png"))
-	{
-		printf("Error Loading enemyTileRight.png\n");
-	}
-
-	enemySprite.setTexture(&enemyTexture, false);
-
-	enemyDirectionRect.setFillColor(sf::Color(200, 0, 0));
-	enemyDirectionRect.setSize(sf::Vector2f(10, 25));
+	loadTextures();
 }
 
 void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
@@ -34,6 +22,10 @@ void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 			randomlyWalk(overWorldMap);
 		}
 	}
+
+	enemySprite.setSize(sf::Vector2f(overWorldMap.getTileSize(), overWorldMap.getTileSize()));
+	enemySprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap.getTileSize()), 40 + (posY * overWorldMap.getTileSize())));
+
 	updateDelay--;
 	if (hit) {
 		enemySprite.setFillColor(sf::Color(100,100,100));
@@ -45,7 +37,6 @@ void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 
 void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
-	enemySprite.setTexture(&enemyTextureRight, false);
 	if (playerPosX > posX && overWorldMap.tileMap[posY][posX + 1] == 'g' && posX + 1 != playerPosX) {
 		posX += 1;
 		enemyDirectionRect.setRotation(-90);
@@ -54,12 +45,12 @@ void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPos
 	else if (playerPosX < posX && overWorldMap.tileMap[posY][posX - 1] == 'g' && posX +- 1 != playerPosX) {
 		posX -= 1;
 		enemyDirectionRect.setRotation(90);
-		enemySprite.setTexture(&enemyTexture, false);
+		enemySprite.setTexture(&enemyTextureLeft, false);
 	}
 	if (playerPosY > posY && overWorldMap.tileMap[posY + 1][posX] == 'g' && posY + 1 != playerPosY) {
 		posY += 1;
 		enemyDirectionRect.setRotation(0);
-		enemySprite.setTexture(&enemyTexture, false);
+		enemySprite.setTexture(&enemyTextureLeft, false);
 	}
 	else if (playerPosY < posY && overWorldMap.tileMap[posY - 1][posX] == 'g' && posY - 1 != playerPosY) {
 		posY -= 1;
@@ -72,7 +63,6 @@ void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPos
 void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 {
 	int movement = rand() % 4 + 1;
-	enemySprite.setTexture(&enemyTextureRight, false);
 	if (movement == 1 && overWorldMap.tileMap[posY][posX + 1] == 'g') {
 		posX += 1;
 		enemyDirectionRect.setRotation(-90);
@@ -81,12 +71,12 @@ void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 	if (movement == 2 && overWorldMap.tileMap[posY][posX - 1] == 'g') {
 		posX -= 1;
 		enemyDirectionRect.setRotation(90);
-		enemySprite.setTexture(&enemyTexture, false);
+		enemySprite.setTexture(&enemyTextureLeft, false);
 	}
 	if (movement == 3 && overWorldMap.tileMap[posY + 1][posX] == 'g') {
 		posY += 1;
 		enemyDirectionRect.setRotation(0);
-		enemySprite.setTexture(&enemyTexture, false);
+		enemySprite.setTexture(&enemyTextureLeft, false);
 	}
 	if (movement == 4 && overWorldMap.tileMap[posY - 1][posX] == 'g') {
 		posY -= 1;
@@ -96,12 +86,20 @@ void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 	updateDelay = delay;
 }
 
+void Enemy::loadTextures()
+{
+	if (!enemyTextureLeft.loadFromFile("./Graphics/Tiles/enemyTile.png"))
+	{
+		printf("Error Loading enemyTile.png\n");
+	}
+	if (!enemyTextureRight.loadFromFile("./Graphics/Tiles/enemyTileRight.png"))
+	{
+		printf("Error Loading enemyTileRight.png\n");
+	}
+    enemySprite.setTexture(&enemyTextureRight, false);
+}
+
 void Enemy::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)
 {
-	enemySprite.setSize(sf::Vector2f(overWorldMap->getTileSize(), overWorldMap->getTileSize()));
-	enemySprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap->getTileSize()), 40 + (posY * overWorldMap->getTileSize())));
-	enemyDirectionRect.setPosition(sf::Vector2f(enemySprite.getPosition().x + overWorldMap->getTileSize() / 2, enemySprite.getPosition().y + overWorldMap->getTileSize() / 2));
-	
 	window->draw(enemySprite);
-	//window->draw(enemyDirectionRect);
 }

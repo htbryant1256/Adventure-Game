@@ -13,7 +13,7 @@ void OverWorldMap::render(sf::RenderWindow* window)
 				objectTileMap[i][j].setTexture(&stoneTexture,false);
 			}
 			else if (tileMap[i][j] == 'd') {
-				objectTileMap[i][j].setTexture(&doorTexture, false);
+				objectTileMap[i][j].setTexture(&grassTexture, false);
 			}
 			window->draw(objectTileMap[i][j]);
 		}

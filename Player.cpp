@@ -4,11 +4,16 @@ Player::Player()
 {
 	posX = 1;
 	posY = 1;
-	delay = 5;
+	delay = 10;
 	//entity.setFillColor(sf::Color(100,150,100));
 	
 	
 	if (!playerTexture.loadFromFile("./Graphics/Tiles/playerTile.png"))
+	{
+		printf("Error Loading playerTile.png\n");
+	}
+
+	if (!playerTextureLeft.loadFromFile("./Graphics/Tiles/playerTileLeft.png"))
 	{
 		printf("Error Loading playerTile.png\n");
 	}
@@ -24,33 +29,41 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		if (overWorldMap.tileMap[posY][posX + 1] != 's' && posY + 1 != 38) {
-			posX += 1;
+			//posX += 1;
+			moveRight = true;
 			updateDelay = delay;
 		}
+		playerSprite.setTexture(&playerTexture, false);
 		direction = EAST;
 		playerDirectionRect.setRotation(-90);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		if (overWorldMap.tileMap[posY][posX - 1] != 's' && posY - 1 != -1) {
-			posX -= 1;
+			//posX -= 1;
+			moveLeft = true;
 			updateDelay = delay;
 		}
+		playerSprite.setTexture(&playerTextureLeft, false);
 		direction = WEST;
 		playerDirectionRect.setRotation(90);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 		if (overWorldMap.tileMap[posY + 1][posX] != 's' && posY + 1 != 20) {
-			posY += 1;
+			//posY += 1;
+			moveDown = true;
 			updateDelay = delay;
 		}
+		playerSprite.setTexture(&playerTexture, false);
 		direction = SOUTH;
 		playerDirectionRect.setRotation(0);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		if (overWorldMap.tileMap[posY - 1][posX] != 's' && posY - 1 != -1) {
-			posY -= 1;
+			//posY -= 1;
+			moveUp = true;
 			updateDelay = delay;
 		}
+		playerSprite.setTexture(&playerTextureLeft, false);
 		direction = NORTH;
 		playerDirectionRect.setRotation(180);
 	}
@@ -87,6 +100,86 @@ void Player::update(OverWorldMap& overWorldMap)
 		//Stone Collisions
 		updateCollisions(overWorldMap);
 	}
+	if (moveRight && moveUp) {
+		animationTimer--;
+		playerSprite.move(sf::Vector2f(50/delay, -50 / delay));
+		if (animationTimer <= 0) {
+			moveRight = false;
+			moveUp = false;
+			posY -= 1;
+			posX += 1;
+			animationTimer = delay;
+		}
+	}
+	else if (moveRight && moveDown) {
+		animationTimer--;
+		playerSprite.move(sf::Vector2f(50 / delay, 50 / delay));
+		if (animationTimer <= 0) {
+			moveRight = false;
+			moveDown = false;
+			posY += 1;
+			posX += 1;
+			animationTimer = delay;
+		}
+	}
+	else if (moveLeft && moveDown) {
+		animationTimer--;
+		playerSprite.move(sf::Vector2f(-50 / delay, 50 / delay));
+		if (animationTimer <= 0) {
+			moveLeft = false;
+			moveDown = false;
+			posY += 1;
+			posX -= 1;
+			animationTimer = delay;
+		}
+	}
+	else if (moveLeft && moveUp) {
+		animationTimer--;
+		playerSprite.move(sf::Vector2f(-50 / delay, -50 / delay));
+		if (animationTimer <= 0) {
+			moveLeft = false;
+			moveUp = false;
+			posY -= 1;
+			posX -= 1;
+			animationTimer = delay;
+		}
+	}
+	else if (moveLeft) {
+		animationTimer--;
+		playerSprite.move(sf::Vector2f(-50 / delay, 0));
+		if (animationTimer <= 0) {
+			moveLeft = false;
+			posX -= 1;
+			animationTimer = delay;
+		}
+	}
+	else if (moveRight) {
+		animationTimer--;
+		playerSprite.move(sf::Vector2f(50 / delay, 0));
+		if (animationTimer <= 0) {
+			moveRight = false;
+			posX += 1;
+			animationTimer = delay;
+		}
+	}
+	else if (moveUp) {
+		animationTimer--;
+		playerSprite.move(sf::Vector2f(0, -50 / delay));
+		if (animationTimer <= 0) {
+			moveUp = false;
+			posY -= 1;
+			animationTimer = delay;
+		}
+	}
+	else if (moveDown) {
+		animationTimer--;
+		playerSprite.move(sf::Vector2f(0, 50 / delay));
+		if (animationTimer <= 0) {
+			moveDown = false;
+			posY += 1;
+			animationTimer = delay;
+		}
+	}
 	updateDelay--;
 	//Screen Change Logic
 	updateScreenChange(overWorldMap);
@@ -96,7 +189,10 @@ void Player::update(OverWorldMap& overWorldMap)
 void Player::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)
 {
 	playerSprite.setSize(sf::Vector2f(overWorldMap->getTileSize(), overWorldMap->getTileSize()));
-	playerSprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap->getTileSize()), 40 + (posY * overWorldMap->getTileSize())));
+	if (!moveRight && !moveLeft && !moveDown && !moveUp) {
+		playerSprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap->getTileSize()), 40 + (posY * overWorldMap->getTileSize())));
+	}
+	
 	playerDirectionRect.setPosition(sf::Vector2f(playerSprite.getPosition().x + overWorldMap->getTileSize() / 2, playerSprite.getPosition().y + overWorldMap->getTileSize() / 2));
 	window->draw(playerSprite);
 	//window->draw(playerDirectionRect);

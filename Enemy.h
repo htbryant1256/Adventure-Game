@@ -14,10 +14,11 @@ public:
 private:
     void seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPosY);
     void randomlyWalk(OverWorldMap& overWorldMap);
+    void loadTextures();
     int seekingDistance;
 
     sf::RectangleShape enemySprite;
-    sf::Texture enemyTexture;
+    sf::Texture enemyTextureLeft;
     sf::Texture enemyTextureRight;
     sf::RectangleShape enemyDirectionRect;
 };
