@@ -14,7 +14,7 @@ private:
 	int attackDelay = delay;
 	int delay = 10;
 	int attackRange = 4;
-	void attackEnemy(EnemyManager& enemyManager, Player player);
+	void attackEnemy(EnemyManager& enemyManager, Player& player);
 
 };
 

@@ -8,7 +8,7 @@ void EnemyPlayerInteraction::update(EnemyManager& enemyManager, Player player)
 	attackDelay--;
 }
 
-void EnemyPlayerInteraction::attackEnemy(EnemyManager& enemyManager, Player player)
+void EnemyPlayerInteraction::attackEnemy(EnemyManager& enemyManager, Player& player)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
 		for (auto& element : enemyManager.enemyVector) {
@@ -31,6 +31,7 @@ void EnemyPlayerInteraction::attackEnemy(EnemyManager& enemyManager, Player play
 			case player.WEST:
 				if ((CommonMathFunctions::distanceFormula(element.posX, player.posX, element.posY, player.posY) <= attackRange && element.posX < player.posX)) {
 					element.hit = true;
+					
 				}
 				break;
 			}
