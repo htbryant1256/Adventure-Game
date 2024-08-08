@@ -12,8 +12,12 @@ private:
     void updateScreenChange(OverWorldMap& overWorldMap);
     void animateLeft();
     void animateRight();
+    void animateUp();
+    void animateDown();
     void animateAttackLeft();
     void animateAttackRight();
+    void animateAttackUp();
+    void animateAttackDown();
     sf::RectangleShape playerSprite;
 
     typedef struct playerTexture {
@@ -25,8 +29,12 @@ private:
         sf::Texture left1;
         sf::Texture left2;
         sf::Texture left3;
+        sf::Texture down;
+        sf::Texture up;
         sf::Texture attackLeft;
         sf::Texture attackRight;
+        sf::Texture attackUp;
+        sf::Texture attackDown;
 
     }PlayerTexture;
 
