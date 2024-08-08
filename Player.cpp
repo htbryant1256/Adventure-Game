@@ -5,76 +5,34 @@ Player::Player()
 	posX = 1;
 	posY = 1;
 	delay = 12;
-	//entity.setFillColor(sf::Color(100,150,100));
 	
-	
-
-
-	if (!playerTextureLeft.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 32, 32, 32)))
+	if (!playerTexture.left.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 32, 32, 32)))
 	{
 		printf("Error Loading playerSpriteSheet.png\n");
 	}
-
-	if (!playerTextureLeft2.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 32, 32, 32)))
-	{
-		printf("Error Loading playerSpriteSheet.png\n");
+	else {
+		playerTexture.left1.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 32, 32, 32));
+		playerTexture.left2.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 32, 32, 32));
+		playerTexture.left3.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 32, 32, 32));
+		playerTexture.right.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 0, 32, 32));
+		playerTexture.right1.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 0, 32, 32));
+		playerTexture.right2.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 0, 32, 32));
+		playerTexture.right3.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 0, 32, 32));
+		playerTexture.attackLeft.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 64, 32, 32));
+		playerTexture.attackRight.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 64, 32, 32));
 	}
 
-	if (!playerTextureLeft3.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 32, 32, 32)))
-	{
-		printf("Error Loading playerSpriteSheet.png\n");
-	}
-
-	if (!playerTextureLeft4.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 32, 32, 32)))
-	{
-		printf("Error Loading playerSpriteSheet.png\n");
-	}
-
-
-	if (!playerTextureRight.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 0, 32, 32)))
-	{
-		printf("Error Loading playerSpriteSheet.png\n");
-	}
-
-	if (!playerTextureRight2.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 0, 32, 32)))
-	{
-		printf("Error Loading playerSpriteSheet.png\n");
-	}
-
-	if (!playerTextureRight3.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 0, 32, 32)))
-	{
-		printf("Error Loading playerSpriteSheet.png\n");
-	}
-
-	if (!playerTextureRight4.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 0, 32, 32)))
-	{
-		printf("Error Loading playerSpriteSheet.png\n");
-	}
-
-
-	if (!playerTextureAttackLeft.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 64, 32, 32)))
-	{
-		printf("Error Loading playerSpriteSheet.png\n");
-	}
-
-	playerSprite.setTexture(&playerTextureRight, false);
-
-	//playerDirectionRect.setFillColor(sf::Color(200, 0, 0));
-	//playerDirectionRect.setSize(sf::Vector2f(10, 25));
-	
+	playerSprite.setTexture(&playerTexture.right, false);
 }
 
 void Player::updateCollisions(OverWorldMap& overWorldMap)
 {
-
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		if (overWorldMap.tileMap[posY][posX + 1] != 's' && posY + 1 != 28) {
 			moveRight = true;
 			updateDelay = delay;
 		}
 		direction = EAST;
-		//playerDirectionRect.setRotation(-90);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		if (overWorldMap.tileMap[posY][posX - 1] != 's' && posY - 1 != -1) {
@@ -82,7 +40,6 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 			updateDelay = delay;
 		}
 		direction = WEST;
-		//playerDirectionRect.setRotation(90);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 		if (overWorldMap.tileMap[posY + 1][posX] != 's' && posY + 1 != 15) {
@@ -90,7 +47,6 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 			updateDelay = delay;
 		}
 		direction = SOUTH;
-		//playerDirectionRect.setRotation(0);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		if (overWorldMap.tileMap[posY - 1][posX] != 's' && posY - 1 != -1) {
@@ -98,10 +54,8 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 			updateDelay = delay;
 		}
 		direction = NORTH;
-		//playerDirectionRect.setRotation(180);
-
 	}
-	// diagonal movement handelingfix
+
 	if (moveDown && moveLeft) {
 		if (overWorldMap.tileMap[posY + 1][posX - 1] == 's') {
 			moveLeft = false;
@@ -150,41 +104,38 @@ void Player::updateScreenChange(OverWorldMap& overWorldMap)
 void Player::animateLeft()
 {
 	if (animationTimer == 0) {
-		playerSprite.setTexture(&playerTextureLeft, false);
+		playerSprite.setTexture(&playerTexture.left, false);
 	}
 	else if (animationTimer < (delay / 4)) {
-		playerSprite.setTexture(&playerTextureLeft2, false);
+		playerSprite.setTexture(&playerTexture.left1, false);
 	}
 	else if (animationTimer < 2 * (delay / 4)) {
-		playerSprite.setTexture(&playerTextureLeft3, false);
+		playerSprite.setTexture(&playerTexture.left2, false);
 	}
 	else if (animationTimer < 3 * (delay / 4)) {
-		playerSprite.setTexture(&playerTextureLeft2, false);
+		playerSprite.setTexture(&playerTexture.left3, false);
 	}
 }
 
 void Player::animateRight()
 {
 	if (animationTimer == 0) {
-		playerSprite.setTexture(&playerTextureRight, false);
+		playerSprite.setTexture(&playerTexture.right, false);
 	}
 	else if (animationTimer < (delay / 4)) {
-		playerSprite.setTexture(&playerTextureRight2, false);
+		playerSprite.setTexture(&playerTexture.right1, false);
 	}
 	else if (animationTimer < 2 * (delay / 4)) {
-		playerSprite.setTexture(&playerTextureRight3, false);
+		playerSprite.setTexture(&playerTexture.right2, false);
 	}
 	else if (animationTimer < 3 * (delay / 4)) {
-		playerSprite.setTexture(&playerTextureRight4, false);
+		playerSprite.setTexture(&playerTexture.right3, false);
 	}
-
 }
 
 void Player::update(OverWorldMap& overWorldMap)
 {
 	if (updateDelay <= 0) {
-
-		//Stone Collisions
 		updateCollisions(overWorldMap);
 	}
 	if (direction == WEST) {
@@ -192,7 +143,14 @@ void Player::update(OverWorldMap& overWorldMap)
 			animateAttackLeft();
 		}
 		else {
-			playerSprite.setTexture(&playerTextureLeft, false);
+			playerSprite.setTexture(&playerTexture.left, false);
+		}
+	}else if (direction == EAST) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
+			animateAttackRight();
+		}
+		else {
+			playerSprite.setTexture(&playerTexture.right, false);
 		}
 	}
 
@@ -306,9 +264,13 @@ void Player::update(OverWorldMap& overWorldMap)
 
 void Player::animateAttackLeft()
 {
-	printf("AnimateAttackLeft\n");
-	playerSprite.setTexture(&playerTextureAttackLeft, false);
+	playerSprite.setTexture(&playerTexture.attackLeft, false);
 	
+}
+
+void Player::animateAttackRight()
+{
+	playerSprite.setTexture(&playerTexture.attackRight, false);
 }
 
 void Player::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)

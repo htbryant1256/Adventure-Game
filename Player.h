@@ -5,7 +5,6 @@ class Player :
 {
 public:
     void update(OverWorldMap& overWorldMap);
-    void animateAttackLeft();
     void render(sf::RenderWindow* window, OverWorldMap* overWorldMap);
     Player();
 private:
@@ -13,19 +12,26 @@ private:
     void updateScreenChange(OverWorldMap& overWorldMap);
     void animateLeft();
     void animateRight();
-    sf::Texture playerTextureAttackLeft;
-
+    void animateAttackLeft();
+    void animateAttackRight();
     sf::RectangleShape playerSprite;
 
-    sf::Texture playerTextureLeft;
-    sf::Texture playerTextureLeft2;
-    sf::Texture playerTextureLeft3;
-    sf::Texture playerTextureLeft4;
+    typedef struct playerTexture {
+        sf::Texture right;
+        sf::Texture right1;
+        sf::Texture right2;
+        sf::Texture right3;
+        sf::Texture left;
+        sf::Texture left1;
+        sf::Texture left2;
+        sf::Texture left3;
+        sf::Texture attackLeft;
+        sf::Texture attackRight;
 
-    sf::Texture playerTextureRight;
-    sf::Texture playerTextureRight2;
-    sf::Texture playerTextureRight3;
-    sf::Texture playerTextureRight4;
+    }PlayerTexture;
+
+    PlayerTexture playerTexture;
+
 
     sf::RectangleShape playerDirectionRect;
     bool moveRight = false;
