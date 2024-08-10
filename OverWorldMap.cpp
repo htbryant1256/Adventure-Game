@@ -90,6 +90,8 @@ void OverWorldMap::loadMapFromJson()
 			tileMap[i][j] = (char)actualJson["layers"][0]["data"][(j + (mapX * (mapWidth / 2))) + (i * mapWidth) + (mapY * ((mapHeight * mapWidth) / 2))].asInt();
 		}
 	}
+	newMapLoaded = true;
+	
 }
 
 int OverWorldMap::getTileSize()

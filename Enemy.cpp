@@ -37,22 +37,22 @@ void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 
 void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
-	if (playerPosX > posX && overWorldMap.tileMap[posY][posX + 1] == 'g' && posX + 1 != playerPosX) {
+	if (playerPosX > posX && overWorldMap.tileMap[posY][posX + 1] == 1 && posX + 1 != playerPosX) {
 		posX += 1;
 		enemyDirectionRect.setRotation(-90);
 		enemySprite.setTexture(&enemyTextureRight, false);
 	}
-	else if (playerPosX < posX && overWorldMap.tileMap[posY][posX - 1] == 'g' && posX +- 1 != playerPosX) {
+	else if (playerPosX < posX && overWorldMap.tileMap[posY][posX - 1] == 1 && posX +- 1 != playerPosX) {
 		posX -= 1;
 		enemyDirectionRect.setRotation(90);
 		enemySprite.setTexture(&enemyTextureLeft, false);
 	}
-	if (playerPosY > posY && overWorldMap.tileMap[posY + 1][posX] == 'g' && posY + 1 != playerPosY) {
+	if (playerPosY > posY && overWorldMap.tileMap[posY + 1][posX] == 1 && posY + 1 != playerPosY) {
 		posY += 1;
 		enemyDirectionRect.setRotation(0);
 		enemySprite.setTexture(&enemyTextureLeft, false);
 	}
-	else if (playerPosY < posY && overWorldMap.tileMap[posY - 1][posX] == 'g' && posY - 1 != playerPosY) {
+	else if (playerPosY < posY && overWorldMap.tileMap[posY - 1][posX] == 1 && posY - 1 != playerPosY) {
 		posY -= 1;
 		enemyDirectionRect.setRotation(180);
 		enemySprite.setTexture(&enemyTextureRight, false);
@@ -63,22 +63,22 @@ void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPos
 void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 {
 	int movement = rand() % 4 + 1;
-	if (movement == 1 && overWorldMap.tileMap[posY][posX + 1] == 'g') {
+	if (movement == 1 && overWorldMap.tileMap[posY][posX + 1] == 1) {
 		posX += 1;
 		enemyDirectionRect.setRotation(-90);
 		enemySprite.setTexture(&enemyTextureRight, false);
 	}
-	if (movement == 2 && overWorldMap.tileMap[posY][posX - 1] == 'g') {
+	if (movement == 2 && overWorldMap.tileMap[posY][posX - 1] == 1) {
 		posX -= 1;
 		enemyDirectionRect.setRotation(90);
 		enemySprite.setTexture(&enemyTextureLeft, false);
 	}
-	if (movement == 3 && overWorldMap.tileMap[posY + 1][posX] == 'g') {
+	if (movement == 3 && overWorldMap.tileMap[posY + 1][posX] == 1) {
 		posY += 1;
 		enemyDirectionRect.setRotation(0);
 		enemySprite.setTexture(&enemyTextureLeft, false);
 	}
-	if (movement == 4 && overWorldMap.tileMap[posY - 1][posX] == 'g') {
+	if (movement == 4 && overWorldMap.tileMap[posY - 1][posX] == 1) {
 		posY -= 1;
 		enemyDirectionRect.setRotation(180);
 		enemySprite.setTexture(&enemyTextureRight, false);

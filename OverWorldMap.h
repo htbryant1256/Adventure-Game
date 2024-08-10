@@ -17,7 +17,7 @@ public:
 	void loadMapUp();
 	void loadMapDown();
 	int getTileSize();
-
+	bool newMapLoaded = false;
 	char tileMap[15][29];
 private:
 	void initJsonReader();
