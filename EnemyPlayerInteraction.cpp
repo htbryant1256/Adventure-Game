@@ -21,6 +21,7 @@ void EnemyPlayerInteraction::attackEnemy(EnemyManager& enemyManager, Player& pla
 			case player.EAST:
 				if ((CommonMathFunctions::distanceFormula(element.posX, player.posX, element.posY, player.posY) <= attackRange && element.posX > player.posX)) {
 					element.hit = true;
+					//element.posX += 1;
 				}
 				break;
 			case player.SOUTH:

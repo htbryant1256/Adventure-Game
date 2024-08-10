@@ -1,5 +1,5 @@
 #include "OverWorldMap.h"
-
+#include "iostream"
 void OverWorldMap::render(sf::RenderWindow* window)
 {
 
@@ -27,7 +27,7 @@ void OverWorldMap::initOverWorldMap()
 	mapPosX = 0;
 	mapPosY = 0;
 	sf::RectangleShape tile;
-	tile.setFillColor(sf::Color(255, 255, 255));
+	tile.setFillColor(sf::Color(200, 200, 200));
 	tile.setSize(sf::Vector2f(tileSize, tileSize));
 	for (int i = 0; i < 15; i++) {
 		for (int j = 0; j < 29; j++) {
@@ -35,6 +35,14 @@ void OverWorldMap::initOverWorldMap()
 			objectTileMap[i][j] = tile;
 		}
 	}
+
+	std::ifstream file("TileMap/MapTest.json");
+	Json::Value actualJson;
+	Json::Reader reader;
+	reader.parse(file, actualJson);
+	std::cout << "layers.data: \n" << actualJson["layers.data"][0]["data"] << "\n";
+
+
 }
 
 void OverWorldMap::loadTextures() {

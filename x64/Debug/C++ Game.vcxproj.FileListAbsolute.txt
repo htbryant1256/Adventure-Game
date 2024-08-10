@@ -2,3 +2,5 @@ C:\Users\henry\source\repos\C++ Game\x64\Debug\C++ Game.exe
 C:\Users\henry\source\repos\C++ Game - Cookie CLicker\x64\Debug\Krabby Clicker.exe
 C:\Users\henry\source\repos\C++ Game - Cookie CLicker - Copy\x64\Debug\Krabby Clicker.exe
 C:\Users\henry\source\repos\Adventure_Game\x64\Debug\Adventure Game.exe
+C:\Users\henry\source\repos\Adventure_Game\x64\Debug\C++ Game.vcxproj.CopyComplete
+C:\Users\henry\source\repos\Adventure_Game\x64\Debug\jsoncpp.dll

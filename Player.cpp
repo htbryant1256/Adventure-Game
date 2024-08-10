@@ -4,7 +4,7 @@ Player::Player()
 {
 	posX = 1;
 	posY = 1;
-	delay = 12;
+	delay = 15;
 	
 	if (!playerTexture.left.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 32, 32, 32)))
 	{
@@ -107,32 +107,32 @@ void Player::updateScreenChange(OverWorldMap& overWorldMap)
 
 void Player::animateLeft()
 {
-	if (animationTimer == 0) {
+	if (animationTimer < (delay / 4)) {
 		playerSprite.setTexture(&playerTexture.left, false);
 	}
-	else if (animationTimer < (delay / 4)) {
+	else if (animationTimer < 2 * (delay / 4)) {
 		playerSprite.setTexture(&playerTexture.left1, false);
 	}
-	else if (animationTimer < 2 * (delay / 4)) {
+	else if (animationTimer < 3 * (delay / 4)) {
 		playerSprite.setTexture(&playerTexture.left2, false);
 	}
-	else if (animationTimer < 3 * (delay / 4)) {
+	else if (animationTimer < 4 * (delay / 4)) {
 		playerSprite.setTexture(&playerTexture.left3, false);
 	}
 }
 
 void Player::animateRight()
 {
-	if (animationTimer == 0) {
-		playerSprite.setTexture(&playerTexture.right, false);
-	}
-	else if (animationTimer < (delay / 4)) {
-		playerSprite.setTexture(&playerTexture.right1, false);
-	}
-	else if (animationTimer < 2 * (delay / 4)) {
+	if (animationTimer < (delay / 4)) {
 		playerSprite.setTexture(&playerTexture.right2, false);
 	}
+	else if (animationTimer < 2 *(delay / 4)) {
+		playerSprite.setTexture(&playerTexture.right1, false);
+	}
 	else if (animationTimer < 3 * (delay / 4)) {
+		playerSprite.setTexture(&playerTexture.right2, false);
+	}
+	else if (animationTimer < 4 * (delay / 4)) {
 		playerSprite.setTexture(&playerTexture.right3, false);
 	}
 }

@@ -1,0 +1,58 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "#tileSet": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "MapTest.json": {
+            "scale": 0.4217672413793104,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 974.4711292795096,
+                "y": 897.414409810935
+            }
+        },
+        "MapTest.tmj": {
+            "scale": 1.1588362068965516,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 464.25888041658925,
+                "y": 240.32732006695187
+            }
+        },
+        "tileSet.tsx": {
+            "dynamicWrapping": true
+        },
+        "untitled.tmx": {
+            "scale": 0.4217672413793104,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1318.2626469085333,
+                "y": 584.4455799693408
+            }
+        },
+        "untitled.tmx#tileSet": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/henry/source/repos/Adventure_Game/TileMap",
+    "last.imagePath": "C:/Users/henry/source/repos/Adventure_Game/Graphics/Tiles",
+    "map.height": 15,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 29,
+    "openFiles": [
+    ],
+    "project": "map.tiled-project",
+    "recentFiles": [
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 1
+}
