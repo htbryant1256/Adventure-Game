@@ -4,7 +4,7 @@ Player::Player()
 {
 	posX = 1;
 	posY = 1;
-	delay = 15;
+	delay = 5;
 	
 	if (!playerTexture.left.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 32, 32, 32)))
 	{
@@ -32,28 +32,28 @@ Player::Player()
 void Player::updateCollisions(OverWorldMap& overWorldMap)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		if (overWorldMap.tileMap[posY][posX + 1] != 's' && posY + 1 != 28) {
+		if (overWorldMap.tileMap[posY][posX + 1] != 2 && posY + 1 != 28) {
 			moveRight = true;
 			updateDelay = delay;
 		}
 		direction = EAST;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		if (overWorldMap.tileMap[posY][posX - 1] != 's' && posY - 1 != -1) {
+		if (overWorldMap.tileMap[posY][posX - 1] != 2 && posY - 1 != -1) {
 			moveLeft = true;
 			updateDelay = delay;
 		}
 		direction = WEST;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		if (overWorldMap.tileMap[posY + 1][posX] != 's' && posY + 1 != 15) {
+		if (overWorldMap.tileMap[posY + 1][posX] != 2 && posY + 1 != 15) {
 			moveDown = true;
 			updateDelay = delay;
 		}
 		direction = SOUTH;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		if (overWorldMap.tileMap[posY - 1][posX] != 's' && posY - 1 != -1) {
+		if (overWorldMap.tileMap[posY - 1][posX] != 2 && posY - 1 != -1) {
 			moveUp = true;
 			updateDelay = delay;
 		}
@@ -61,21 +61,21 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 	}
 
 	if (moveDown && moveLeft) {
-		if (overWorldMap.tileMap[posY + 1][posX - 1] == 's') {
+		if (overWorldMap.tileMap[posY + 1][posX - 1] == 2) {
 			moveLeft = false;
 		}
 	}if (moveDown && moveRight) {
-		if (overWorldMap.tileMap[posY + 1][posX + 1] == 's') {
+		if (overWorldMap.tileMap[posY + 1][posX + 1] == 2) {
 			moveRight = false;
 		}
 	}
 	if (moveUp && moveRight) {
-		if (overWorldMap.tileMap[posY - 1][posX + 1] == 's') {
+		if (overWorldMap.tileMap[posY - 1][posX + 1] == 2) {
 			moveRight = false;
 		}
 	}
 	if (moveUp && moveLeft) {
-		if (overWorldMap.tileMap[posY - 1][posX - 1] == 's') {
+		if (overWorldMap.tileMap[posY - 1][posX - 1] == 2) {
 			moveLeft = false;
 		}
 	}
@@ -83,22 +83,22 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 
 void Player::updateScreenChange(OverWorldMap& overWorldMap)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && overWorldMap.tileMap[posY][posX] == 'd' && posX == 28) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)  && posX == 28) {
 		posX = 0;
 		overWorldMap.loadMapRight();
 		updateDelay = delay;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && overWorldMap.tileMap[posY][posX] == 'd' && posX == 0) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && posX == 0) {
 		posX = 28;
 		overWorldMap.loadMapLeft();
 		updateDelay = delay;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && overWorldMap.tileMap[posY][posX] == 'd' && posY == 14) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && posY == 14) {
 		posY = 0;
 		overWorldMap.loadMapDown();
 		updateDelay = delay;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && overWorldMap.tileMap[posY][posX] == 'd' && posY == 0) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && posY == 0) {
 		posY = 14;
 		overWorldMap.loadMapUp();
 		updateDelay = delay;

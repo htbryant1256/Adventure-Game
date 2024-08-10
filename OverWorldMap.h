@@ -22,6 +22,11 @@ public:
 	void loadMapDown();
 	bool newMapLoaded = false;
 private:
+
+	int mapY = 0;
+	int mapX = 0;
+	Json::Value actualJson;
+	Json::Reader reader;
 	void loadTextures();
 	sf::Texture stoneTexture;
 

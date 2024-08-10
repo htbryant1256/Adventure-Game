@@ -3,13 +3,12 @@
 void OverWorldMap::render(sf::RenderWindow* window)
 {
 
-
 	for (int i = 0; i < 15; i++) {
 		for (int j = 0; j < 29; j++) {
-			if (tileMap[i][j] == 'g') {
+			if (tileMap[i][j] == 1) {
 				objectTileMap[i][j].setTexture(&grassTexture, false);
 			}
-			else if (tileMap[i][j] == 's') {
+			else if (tileMap[i][j] == 2) {
 				objectTileMap[i][j].setTexture(&stoneTexture,false);
 			}
 			else if (tileMap[i][j] == 'd') {
@@ -37,11 +36,15 @@ void OverWorldMap::initOverWorldMap()
 	}
 
 	std::ifstream file("TileMap/MapTest.json");
-	Json::Value actualJson;
-	Json::Reader reader;
 	reader.parse(file, actualJson);
-	std::cout << "layers.data: \n" << actualJson["layers.data"][0]["data"] << "\n";
+	std::cout << "layers: \n" << actualJson["layers"][0]["data"][0] << "\n";
+	for (int i = 0; i < 15; i++) {
+		for (int j = 0; j < 29; j++) {
+			tileMap[i][j] = (char)actualJson["layers"][0]["data"][j + (i* 58)].asInt();
+		}
+	}
 
+	
 
 }
 
@@ -101,6 +104,14 @@ int OverWorldMap::getTileSize()
 
 void OverWorldMap::loadMapLeft()
 {
+	mapX -= 1;
+	for (int i = 0; i < 15; i++) {
+		for (int j = 0; j < 29; j++) {
+			tileMap[i][j] = (char)actualJson["layers"][0]["data"][(j + (mapX * 29)) + (i * 58) + (mapY * ((30 * 58) / 2))].asInt();
+		}
+	}
+
+	/*
 	if (mapPosX != 0) {
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 29; j++) {
@@ -109,11 +120,19 @@ void OverWorldMap::loadMapLeft()
 		}
 		mapPosX -= 1;
 		newMapLoaded = true;
-	}
+	}*/
 }
 
 void OverWorldMap::loadMapRight()
 {
+
+	mapX += 1;
+	for (int i = 0; i < 15; i++) {
+		for (int j = 0; j < 29; j++) {
+			tileMap[i][j] = (char)actualJson["layers"][0]["data"][(j + (mapX * 29)) + (i * 58) + (mapY * ((30 * 58) / 2))].asInt();
+		}
+	}
+	/*
 	if (mapPosX != 1) {
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 29; j++) {
@@ -122,11 +141,19 @@ void OverWorldMap::loadMapRight()
 		}
 		mapPosX += 1;
 		newMapLoaded = true;
-	}
+	}*/
 }
 
 void OverWorldMap::loadMapUp()
 {
+	mapY -= 1;
+
+	for (int i = 0; i < 15; i++) {
+		for (int j = 0; j < 29; j++) {
+			tileMap[i][j] = (char)actualJson["layers"][0]["data"][(j + (mapX * 29)) + (i * 58) + (mapY * ((30 * 58) / 2))].asInt();
+		}
+	}
+	/*
 	if (mapPosY != 0) {
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 29; j++) {
@@ -135,11 +162,19 @@ void OverWorldMap::loadMapUp()
 		}
 		mapPosY -= 1;
 		newMapLoaded = true;
-	}
+	}*/
 }
 
 void OverWorldMap::loadMapDown()
 {
+	mapY += 1;
+	for (int i = 0; i < 15; i++) {
+		for (int j = 0; j < 29; j++) {
+			tileMap[i][j] = (char)actualJson["layers"][0]["data"][(j + (mapX * 29)) + (i * 58) + (mapY * ((30* 58) / 2)) ].asInt();
+		}
+	}
+
+	/*
 	if (mapPosY != 1) {
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 29; j++) {
@@ -148,5 +183,5 @@ void OverWorldMap::loadMapDown()
 		}
 		mapPosY += 1;
 		newMapLoaded = true;
-	}
+	}*/
 }

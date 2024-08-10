@@ -28,7 +28,8 @@
             }
         },
         "tileSet.tsx": {
-            "dynamicWrapping": true
+            "dynamicWrapping": true,
+            "scaleInDock": 1
         },
         "untitled.tmx": {
             "scale": 0.4217672413793104,
