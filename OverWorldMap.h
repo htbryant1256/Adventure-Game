@@ -17,13 +17,18 @@ public:
 	void loadMapUp();
 	void loadMapDown();
 	int getTileSize();
+
 	bool newMapLoaded = false;
-	char tileMap[15][29];
+
+	static const int tileMapWidth = 29;
+	static const int tileMapHeight = 15;
+	char tileMap[tileMapHeight][tileMapWidth];
 private:
 	void initJsonReader();
 	void loadMapFromJson();
 	void loadTextures();
 	void initObjectTileMap();
+	int getMapPositionIndex(int i, int j);
 
 	int mapY = 0;
 	int mapX = 0;
@@ -38,4 +43,3 @@ private:
 	sf::Texture doorTexture;
 	sf::RectangleShape objectTileMap[15][29];
 };
-

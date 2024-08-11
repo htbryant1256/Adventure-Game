@@ -11,8 +11,8 @@ void OverWorldMap::initOverWorldMap()
 
 void OverWorldMap::render(sf::RenderWindow* window)
 {
-	for (int i = 0; i < 15; i++) {
-		for (int j = 0; j < 29; j++) {
+	for (int i = 0; i < tileMapHeight; i++) {
+		for (int j = 0; j < tileMapWidth; j++) {
 			if (tileMap[i][j] == 1) {
 				objectTileMap[i][j].setTexture(&grassTexture, false);
 			}
@@ -51,8 +51,8 @@ void OverWorldMap::initObjectTileMap()
 	sf::RectangleShape tile;
 	tile.setFillColor(sf::Color(200, 200, 200));
 	tile.setSize(sf::Vector2f(tileSize, tileSize));
-	for (int i = 0; i < 15; i++) {
-		for (int j = 0; j < 29; j++) {
+	for (int i = 0; i < tileMapHeight; i++) {
+		for (int j = 0; j < tileMapWidth; j++) {
 			tile.setPosition(sf::Vector2f(10 + (j * tileSize), 40 + (i * tileSize)));
 			objectTileMap[i][j] = tile;
 		}
@@ -85,13 +85,17 @@ void OverWorldMap::loadMapDown()
 
 void OverWorldMap::loadMapFromJson()
 {
-	for (int i = 0; i < 15; i++) {
-		for (int j = 0; j < 29; j++) {
-			tileMap[i][j] = (char)actualJson["layers"][0]["data"][(j + (mapX * (mapWidth / (mapWidth / 29)))) + (i * mapWidth) + (mapY * ((mapHeight * mapWidth) / (mapHeight / 15)))].asInt();
+	for (int i = 0; i < tileMapHeight; i++) {
+		for (int j = 0; j < tileMapWidth; j++) {
+			tileMap[i][j] = (char)actualJson["layers"][0]["data"][getMapPositionIndex(i,j)].asInt();
 		}
 	}
 	newMapLoaded = true;
-	
+}
+
+int OverWorldMap::getMapPositionIndex(int i, int j)
+{
+	return (j + (mapX * (mapWidth / (mapWidth / tileMapWidth)))) + (i * mapWidth) + (mapY * ((mapHeight * mapWidth) / (mapHeight / tileMapHeight)));
 }
 
 int OverWorldMap::getTileSize()
