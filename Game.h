@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "EnemyManager.h"
 #include "EnemyPlayerInteraction.h"
+#include "HUD.h"
 class Game
 {
 private:
@@ -21,6 +22,7 @@ private:
 	Player player;
 	EnemyManager enemyManager;
 	EnemyPlayerInteraction enemyPlayerInteraction;
+	HUD hud;
 	int windowHeight;
 	int windowWidth;
 

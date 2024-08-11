@@ -35,6 +35,7 @@ void Game::update()
     player.update(overWorldMap);
     enemyPlayerInteraction.update(enemyManager, player, overWorldMap);
     enemyManager.update(overWorldMap, player.posX, player.posY);
+    hud.update(player);
 }
 
 void Game::render()
@@ -43,6 +44,7 @@ void Game::render()
     overWorldMap.render(window);
     enemyManager.render(window, &overWorldMap);
     player.render(window, &overWorldMap);
+    hud.render(window);
     window->display();
 }
 

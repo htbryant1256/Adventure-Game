@@ -158,6 +158,7 @@
     <ClCompile Include="EnemyPlayerInteraction.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="OverWorldMap.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="EnemyPlayerInteraction.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="OverWorldMap.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>

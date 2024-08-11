@@ -1,4 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (C++ Game.vcxproj, Krabby Clicker.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  HUD.cpp
   Player.cpp
 C:\Users\henry\source\repos\Adventure_Game\Player.cpp(196,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
@@ -80,6 +81,7 @@ C:\Users\henry\source\repos\Adventure_Game\Player.cpp(352,44): warning C4244: 'a
           [
               T=float
           ]
+  Generating Code...
   C++ Game.vcxproj -> C:\Users\henry\source\repos\Adventure_Game\x64\Debug\Adventure Game.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
