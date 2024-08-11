@@ -40,6 +40,8 @@ private:
 	Json::Reader reader;
 	sf::Texture stoneTexture;
 	sf::Texture grassTexture;
-	sf::Texture doorTexture;
+	sf::Texture waterTexture;
+	sf::Texture woodTexture;
+	sf::Texture sandTexture;
 	sf::RectangleShape objectTileMap[15][29];
 };

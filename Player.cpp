@@ -2,9 +2,9 @@
 
 Player::Player()
 {
-	posX = 1;
-	posY = 1;
-	delay = 5;
+	posX = 15;
+	posY = 8;
+	delay = 10;
 	
 	if (!playerTexture.left.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 32, 32, 32)))
 	{
@@ -32,28 +32,28 @@ Player::Player()
 void Player::updateCollisions(OverWorldMap& overWorldMap)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		if (overWorldMap.tileMap[posY][posX + 1] != 2 && posY + 1 != 28) {
+		if (overWorldMap.tileMap[posY][posX + 1] < 3 && posY + 1 != 28) {
 			moveRight = true;
 			updateDelay = delay;
 		}
 		direction = EAST;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		if (overWorldMap.tileMap[posY][posX - 1] != 2 && posY - 1 != -1) {
+		if (overWorldMap.tileMap[posY][posX - 1] < 3 && posY - 1 != -1) {
 			moveLeft = true;
 			updateDelay = delay;
 		}
 		direction = WEST;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		if (overWorldMap.tileMap[posY + 1][posX] != 2 && posY + 1 != 15) {
+		if (overWorldMap.tileMap[posY + 1][posX] < 3 && posY + 1 != 15) {
 			moveDown = true;
 			updateDelay = delay;
 		}
 		direction = SOUTH;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		if (overWorldMap.tileMap[posY - 1][posX] != 2 && posY - 1 != -1) {
+		if (overWorldMap.tileMap[posY - 1][posX] < 3 && posY - 1 != -1) {
 			moveUp = true;
 			updateDelay = delay;
 		}
@@ -61,21 +61,21 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 	}
 
 	if (moveDown && moveLeft) {
-		if (overWorldMap.tileMap[posY + 1][posX - 1] == 2) {
+		if (overWorldMap.tileMap[posY + 1][posX - 1] >= 3) {
 			moveLeft = false;
 		}
 	}if (moveDown && moveRight) {
-		if (overWorldMap.tileMap[posY + 1][posX + 1] == 2) {
+		if (overWorldMap.tileMap[posY + 1][posX + 1] >= 3) {
 			moveRight = false;
 		}
 	}
 	if (moveUp && moveRight) {
-		if (overWorldMap.tileMap[posY - 1][posX + 1] == 2) {
+		if (overWorldMap.tileMap[posY - 1][posX + 1] >= 3) {
 			moveRight = false;
 		}
 	}
 	if (moveUp && moveLeft) {
-		if (overWorldMap.tileMap[posY - 1][posX - 1] == 2) {
+		if (overWorldMap.tileMap[posY - 1][posX - 1] >= 3) {
 			moveLeft = false;
 		}
 	}

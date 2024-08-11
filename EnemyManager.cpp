@@ -39,7 +39,7 @@ void EnemyManager::populateMap(OverWorldMap& overWorldMap, int playerPosX, int p
 			y = rand() % 14 + 1;
 			x = rand() % 28 + 1;
 
-			while (overWorldMap.tileMap[y][x] != 1 || CommonMathFunctions::distanceFormula(playerPosX,x, playerPosY,y) < 10) {
+			while (overWorldMap.tileMap[y][x] > 3 || CommonMathFunctions::distanceFormula(playerPosX,x, playerPosY,y) < 10) {
 				y = rand() % 14 + 1;
 				x = rand() % 28 + 1;
 			}

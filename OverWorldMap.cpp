@@ -17,7 +17,16 @@ void OverWorldMap::render(sf::RenderWindow* window)
 				objectTileMap[i][j].setTexture(&grassTexture, false);
 			}
 			else if (tileMap[i][j] == 2) {
+				objectTileMap[i][j].setTexture(&sandTexture, false);
+			}
+			else if (tileMap[i][j] == 3) {
 				objectTileMap[i][j].setTexture(&stoneTexture, false);
+			}
+			else if (tileMap[i][j] == 4) {
+				objectTileMap[i][j].setTexture(&waterTexture, false);
+			}
+			else if (tileMap[i][j] == 5) {
+				objectTileMap[i][j].setTexture(&woodTexture, false);
 			}
 			window->draw(objectTileMap[i][j]);
 		}
@@ -26,12 +35,23 @@ void OverWorldMap::render(sf::RenderWindow* window)
 
 void OverWorldMap::loadTextures() 
 {
-	if (!stoneTexture.loadFromFile("./Graphics/Tiles/stoneTile.png"))
+	if (!stoneTexture.loadFromFile("./Graphics/lightTiles/stoneTile.png"))
 	{
 		printf("Error Loading stoneTile.png\n");
 	}
-
-	if (!grassTexture.loadFromFile("./Graphics/Tiles/grassTile.png"))
+	if (!grassTexture.loadFromFile("./Graphics/lightTiles/grassTile.png"))
+	{
+		printf("Error Loading grassTile.png\n");
+	}
+	if (!sandTexture.loadFromFile("./Graphics/lightTiles/sandTile.png"))
+	{
+		printf("Error Loading grassTile.png\n");
+	}
+	if (!waterTexture.loadFromFile("./Graphics/lightTiles/waterTile.png"))
+	{
+		printf("Error Loading grassTile.png\n");
+	}
+	if (!woodTexture.loadFromFile("./Graphics/lightTiles/woodTile.png"))
 	{
 		printf("Error Loading grassTile.png\n");
 	}
