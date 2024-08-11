@@ -17,7 +17,7 @@ public:
 	void loadMapUp();
 	void loadMapDown();
 	int getTileSize();
-
+	void resetMap();
 	bool newMapLoaded = false;
 
 	static const int tileMapWidth = 29;

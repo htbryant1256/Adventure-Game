@@ -122,3 +122,10 @@ int OverWorldMap::getTileSize()
 {
 	return tileSize;
 }
+
+void OverWorldMap::resetMap()
+{
+	mapX = 0;
+	mapY = 0;
+	loadMapFromJson();
+}

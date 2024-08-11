@@ -87,9 +87,9 @@ void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 
 void Enemy::loadTextures()
 {
-	if (!enemyTextureLeft.loadFromFile("./Graphics/Tiles/enemyTile.png"))
+	if (!enemyTextureLeft.loadFromFile("./Graphics/Tiles/enemyTileLeft.png"))
 	{
-		printf("Error Loading enemyTile.png\n");
+		printf("Error Loading enemyTileLeft.png\n");
 	}
 	if (!enemyTextureRight.loadFromFile("./Graphics/Tiles/enemyTileRight.png"))
 	{

@@ -354,3 +354,10 @@ void Player::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)
 	window->draw(playerSprite);
 	//window->draw(playerDirectionRect);
 }
+
+void Player::resetPlayer()
+{
+	health = 100;
+	posX = 15;
+	posY = 8;
+}

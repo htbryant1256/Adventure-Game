@@ -6,6 +6,7 @@ class Player :
 public:
     void update(OverWorldMap& overWorldMap);
     void render(sf::RenderWindow* window, OverWorldMap* overWorldMap);
+    void resetPlayer();
     Player();
 private:
     void updateCollisions(OverWorldMap& overWorldMap);

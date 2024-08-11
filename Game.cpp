@@ -38,7 +38,9 @@ void Game::update()
         enemyManager.update(overWorldMap, player.posX, player.posY);
         hud.update(player);
     }
-
+    else {
+        deathScreen.update(player, overWorldMap);
+    }
 }
 
 void Game::render()
@@ -51,29 +53,9 @@ void Game::render()
         hud.render(window);
     }
     else {
-        sf::Font font;
-        if (!font.loadFromFile("arial.ttf"))
-        {
-            printf("Error\n");
-        }
-        sf::Text text;
-
-        text.setFont(font);
-
-        text.setString("U ded boi");
-
-        text.setCharacterSize(60);
-
-        text.setFillColor(sf::Color::Red);
-
-        text.setStyle(sf::Text::Bold);
-        text.setPosition(sf::Vector2f(windowWidth / 2, windowHeight / 2));
-
-        window->draw(text);
+        deathScreen.render(window);
     }
     window->display();
-
-
 }
 
 Game::Game()
