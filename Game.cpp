@@ -32,20 +32,48 @@ void Game::pollEvents()
 void Game::update()
 {
     pollEvents();
-    player.update(overWorldMap);
-    enemyPlayerInteraction.update(enemyManager, player, overWorldMap);
-    enemyManager.update(overWorldMap, player.posX, player.posY);
-    hud.update(player);
+    if (player.health > 0) {
+        player.update(overWorldMap);
+        enemyPlayerInteraction.update(enemyManager, player, overWorldMap);
+        enemyManager.update(overWorldMap, player.posX, player.posY);
+        hud.update(player);
+    }
+
 }
 
 void Game::render()
 {
     window->clear(sf::Color::Black);
-    overWorldMap.render(window);
-    enemyManager.render(window, &overWorldMap);
-    player.render(window, &overWorldMap);
-    hud.render(window);
+    if (player.health > 0) {
+        overWorldMap.render(window);
+        enemyManager.render(window, &overWorldMap);
+        player.render(window, &overWorldMap);
+        hud.render(window);
+    }
+    else {
+        sf::Font font;
+        if (!font.loadFromFile("arial.ttf"))
+        {
+            printf("Error\n");
+        }
+        sf::Text text;
+
+        text.setFont(font);
+
+        text.setString("U ded boi");
+
+        text.setCharacterSize(60);
+
+        text.setFillColor(sf::Color::Red);
+
+        text.setStyle(sf::Text::Bold);
+        text.setPosition(sf::Vector2f(windowWidth / 2, windowHeight / 2));
+
+        window->draw(text);
+    }
     window->display();
+
+
 }
 
 Game::Game()

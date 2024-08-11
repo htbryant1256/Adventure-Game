@@ -295,8 +295,6 @@ void Player::update(OverWorldMap& overWorldMap)
 	updateDelay--;
 	//Screen Change Logic
 	updateScreenChange(overWorldMap);
-
-	printf("playerHealth: %d\n", health);
 	if (hit == true) {
 		health -= 5;
 		playerSprite.setFillColor(sf::Color(255, 0, 0));

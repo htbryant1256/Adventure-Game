@@ -60,7 +60,7 @@ void EnemyPlayerInteraction::enemyAttackPlayer(EnemyManager& enemyManager, Playe
 {
 	for (auto& element : enemyManager.enemyVector) {
 		if (element.attackDelay <= 0) {
-			if (CommonMathFunctions::distanceFormula(element.posX, player.posX, element.posY, player.posY) <= 2) {
+			if (CommonMathFunctions::distanceFormula(element.posX, player.posX, element.posY, player.posY) <= 1.5) {
 				player.hit = true;
 			}
 			element.attackDelay = enemyAttackDelay;
