@@ -10,8 +10,8 @@
 class OverWorldMap
 {
 public:
+	OverWorldMap();
 	void render(sf::RenderWindow* window);
-	void initOverWorldMap();
 	void loadMapLeft();
 	void loadMapRight();
 	void loadMapUp();

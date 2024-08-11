@@ -1,7 +1,7 @@
 #include "OverWorldMap.h"
 #include "iostream"
 
-void OverWorldMap::initOverWorldMap()
+OverWorldMap::OverWorldMap()
 {
 	loadTextures();
 	initObjectTileMap();

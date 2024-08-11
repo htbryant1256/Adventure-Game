@@ -6,7 +6,6 @@ void Game::initVariables()
 	window = nullptr;
     windowWidth = 1920;
     windowHeight = 1080;
-    overWorldMap.initOverWorldMap();
 }
 
 void Game::initWindow()
@@ -34,9 +33,7 @@ void Game::update()
 {
     pollEvents();
     player.update(overWorldMap);
-
     enemyPlayerInteraction.update(enemyManager, player);
-
     enemyManager.update(overWorldMap, player.posX, player.posY);
 }
 
@@ -59,4 +56,3 @@ Game::~Game()
 {
 	delete window;
 }
-
