@@ -5,7 +5,7 @@ Player::Player()
 	posX = 15;
 	posY = 8;
 	delay = 5;
-	
+	health = 10;
 	if (!playerTexture.left.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 32, 32, 32)))
 	{
 		printf("Error Loading playerSpriteSheet.png\n");
@@ -154,6 +154,7 @@ void Player::animateUp()
 
 void Player::update(OverWorldMap& overWorldMap)
 {
+
 	if (updateDelay <= 0) {
 		updateCollisions(overWorldMap);
 	}
@@ -294,6 +295,16 @@ void Player::update(OverWorldMap& overWorldMap)
 	updateDelay--;
 	//Screen Change Logic
 	updateScreenChange(overWorldMap);
+
+	printf("playerHealth: %d\n", health);
+	if (hit == true) {
+		health--;
+		playerSprite.setFillColor(sf::Color(255, 0, 0));
+		hit = false;
+	}
+	else {
+		playerSprite.setFillColor(sf::Color(255, 255, 255));
+	}
 	
 }
 

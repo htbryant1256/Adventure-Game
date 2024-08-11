@@ -13,6 +13,8 @@ public:
 	int delay;
 	int updateDelay = delay;
 
+	int attackDelay;
+
 	enum Direction {
 		NORTH = 1,
 		EAST = 2,

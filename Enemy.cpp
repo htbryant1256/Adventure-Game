@@ -22,7 +22,6 @@ void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 			randomlyWalk(overWorldMap);
 		}
 	}
-
 	enemySprite.setSize(sf::Vector2f(overWorldMap.getTileSize(), overWorldMap.getTileSize()));
 	enemySprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap.getTileSize()), 40 + (posY * overWorldMap.getTileSize())));
 

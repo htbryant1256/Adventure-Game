@@ -9,10 +9,11 @@ class EnemyPlayerInteraction
 public:
 	void update(EnemyManager& enemyManager, Player& player, OverWorldMap& overWorldMap);
 private:
-	int attackDelay = delay;
-	int delay = 15;
+	int playerAttackDelay = 15;
+	int enemyAttackDelay = 15;
 	int attackRange = 2;
 	int knockBackDistance = 1;
-	void attackEnemy(EnemyManager& enemyManager, Player& player, OverWorldMap& overWorldMap);
+	void playerAttackEnemy(EnemyManager& enemyManager, Player& player, OverWorldMap& overWorldMap);
+	void enemyAttackPlayer(EnemyManager& enemyManager, Player& player, OverWorldMap& overWorldMap);
 };
 
