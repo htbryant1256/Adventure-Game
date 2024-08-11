@@ -87,7 +87,7 @@ void OverWorldMap::loadMapFromJson()
 {
 	for (int i = 0; i < 15; i++) {
 		for (int j = 0; j < 29; j++) {
-			tileMap[i][j] = (char)actualJson["layers"][0]["data"][(j + (mapX * (mapWidth / 2))) + (i * mapWidth) + (mapY * ((mapHeight * mapWidth) / 2))].asInt();
+			tileMap[i][j] = (char)actualJson["layers"][0]["data"][(j + (mapX * (mapWidth / (mapWidth / 29)))) + (i * mapWidth) + (mapY * ((mapHeight * mapWidth) / (mapHeight / 15)))].asInt();
 		}
 	}
 	newMapLoaded = true;
