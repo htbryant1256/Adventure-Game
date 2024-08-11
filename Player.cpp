@@ -4,7 +4,7 @@ Player::Player()
 {
 	posX = 15;
 	posY = 8;
-	delay = 10;
+	delay = 5;
 	
 	if (!playerTexture.left.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 32, 32, 32)))
 	{
@@ -25,21 +25,20 @@ Player::Player()
 		playerTexture.up.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
 		playerTexture.down.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
 	}
-
 	playerSprite.setTexture(&playerTexture.right, false);
 }
 
 void Player::updateCollisions(OverWorldMap& overWorldMap)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		if (overWorldMap.tileMap[posY][posX + 1] < 3 && posY + 1 != 28) {
+		if (overWorldMap.tileMap[posY][posX + 1] < 3 && posX + 1 != 29) {
 			moveRight = true;
 			updateDelay = delay;
 		}
 		direction = EAST;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		if (overWorldMap.tileMap[posY][posX - 1] < 3 && posY - 1 != -1) {
+		if (overWorldMap.tileMap[posY][posX - 1] < 3 && posX - 1 != -1) {
 			moveLeft = true;
 			updateDelay = delay;
 		}
