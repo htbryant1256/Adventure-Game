@@ -27,7 +27,7 @@ DeathScreen::DeathScreen()
 
     deathText.setFont(deathFont);
 
-    deathText.setString("You Died");
+    deathText.setString("Press Enter To Respawn");
 
     deathText.setCharacterSize(60);
 
