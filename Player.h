@@ -17,8 +17,8 @@ private:
     void animateDown();
     void animateAttack();
 
-    void animateMovement(sf::Texture texture[4]);
-    
+    void animate(sf::Texture texture[4]);
+    void movePlayer();
     void initTextures();
     sf::RectangleShape playerSprite;
 
@@ -43,5 +43,8 @@ private:
     bool moveUp = false;
     bool moveDown = false;
     int animationTimer = delay;
+    int totalHealth = 100;
+    int playerStartingPosX = 15;
+    int playerStartingPosY = 8;
 };
 
