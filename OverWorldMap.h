@@ -16,7 +16,7 @@ public:
 	void loadMapRight();
 	void loadMapUp();
 	void loadMapDown();
-	int getTileSize();
+	static int getTileSize();
 	void resetMap();
 	bool newMapLoaded = false;
 
@@ -34,7 +34,7 @@ private:
 	int mapX = 0;
 	int mapHeight = 0;
 	int mapWidth = 0;
-	int tileSize = 65;
+	static const int tileSize = 65;
 
 	Json::Value actualJson;
 	Json::Reader reader;

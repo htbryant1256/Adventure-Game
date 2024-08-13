@@ -18,6 +18,22 @@ void Entity::animate(sf::Texture texture[4])
 	}
 }
 
+void Entity::animateAttack()
+{
+	if (direction == WEST) {
+		entitySprite.setTexture(&entityTexture.attackLeft, false);
+	}
+	else if (direction == EAST) {
+		entitySprite.setTexture(&entityTexture.attackRight, false);
+	}
+	else if (direction == SOUTH) {
+		entitySprite.setTexture(&entityTexture.attackDown, false);
+	}
+	else if (direction == NORTH) {
+		entitySprite.setTexture(&entityTexture.attackUp, false);
+	}
+}
+
 void Entity::animateLeft()
 {
 	animate(entityTexture.left);
@@ -36,4 +52,9 @@ void Entity::animateUp()
 void Entity::animateDown()
 {
 	animate(entityTexture.down);
+}
+
+void Entity::render(sf::RenderWindow* window)
+{
+	window->draw(entitySprite);
 }

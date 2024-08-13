@@ -49,7 +49,7 @@ void Game::render()
     if (player.health > 0) {
         overWorldMap.render(window);
         enemyManager.render(window, &overWorldMap);
-        player.render(window, &overWorldMap);
+        player.render(window);
         hud.render(window);
     }
     else {

@@ -46,6 +46,8 @@ public:
 	void animateRight();
 	void animateUp();
 	void animateDown();
+	void render(sf::RenderWindow* window);
+	void animateAttack();
 private:
 
 

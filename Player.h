@@ -5,23 +5,17 @@ class Player :
 {
 public:
     void update(OverWorldMap& overWorldMap);
-    void render(sf::RenderWindow* window, OverWorldMap* overWorldMap);
     void resetPlayer();
     Player();
 private:
     void updateCollisions(OverWorldMap& overWorldMap);
     void updateScreenChange(OverWorldMap& overWorldMap);
 
-    void animateAttack();
 
- //   void animate(sf::Texture texture[4]);
+
     void movePlayer();
     void initTextures();
 
-
-
-
-    sf::RectangleShape playerDirectionRect;
     bool moveRight = false;
     bool moveLeft = false;
     bool moveUp = false;

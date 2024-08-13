@@ -3,6 +3,7 @@
 Player::Player()
 {
 	delay = 8;
+	entitySprite.setSize(sf::Vector2f(OverWorldMap::getTileSize(), OverWorldMap::getTileSize()));
 	resetPlayer();
 	initTextures();
 }
@@ -135,21 +136,9 @@ void Player::update(OverWorldMap& overWorldMap)
 	else {
 		entitySprite.setFillColor(sf::Color(255, 255, 255));
 	}
-}
-
-void Player::animateAttack()
-{
-	if (direction == WEST) {
-		entitySprite.setTexture(&entityTexture.attackLeft, false);
-	}
-	else if (direction == EAST) {
-		entitySprite.setTexture(&entityTexture.attackRight, false);
-	}
-	else if (direction == SOUTH) {
-		entitySprite.setTexture(&entityTexture.attackDown, false);
-	}
-	else if (direction == NORTH) {
-		entitySprite.setTexture(&entityTexture.attackUp, false);
+	//This should be its own function.
+	if (!moveRight && !moveLeft && !moveDown && !moveUp) {
+		entitySprite.setPosition(sf::Vector2f(10 + (posX * OverWorldMap::getTileSize()), 40 + (posY * OverWorldMap::getTileSize())));
 	}
 }
 
@@ -216,16 +205,6 @@ void Player::initTextures()
 		entityTexture.attackDown.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 64, 32, 32));
 	}
 	entitySprite.setTexture(&entityTexture.right[0], false);
-}
-
-void Player::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)
-{
-	//Remove the setSize here, it is ridiculous and expensive to run.
-	entitySprite.setSize(sf::Vector2f(overWorldMap->getTileSize(), overWorldMap->getTileSize()));
-	if (!moveRight && !moveLeft && !moveDown && !moveUp) {
-		entitySprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap->getTileSize()), 40 + (posY * overWorldMap->getTileSize())));
-	}
-	window->draw(entitySprite);
 }
 
 void Player::resetPlayer()
