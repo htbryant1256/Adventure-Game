@@ -1,6 +1,5 @@
 #include "Entity.h"
 
-
 void Entity::animate(sf::Texture texture[4])
 {
 	animationTimer--;
@@ -31,6 +30,41 @@ void Entity::animateAttack()
 	}
 	else if (direction == NORTH) {
 		entitySprite.setTexture(&entityTexture.attackUp, false);
+	}
+}
+
+void Entity::moveEntity()
+{
+	if (moveRight) {
+		entitySprite.move(sf::Vector2f(OverWorldMap::getTileSize() / delay, 0));
+		if (animationTimer <= 0) {
+			moveRight = false;
+			posX += 1;
+		}
+	}
+	if (moveLeft) {
+		entitySprite.move(sf::Vector2f(-OverWorldMap::getTileSize() / delay, 0));
+		if (animationTimer <= 0) {
+			moveLeft = false;
+			posX -= 1;
+		}
+	}
+	if (moveUp) {
+		entitySprite.move(sf::Vector2f(0, -OverWorldMap::getTileSize() / delay));
+		if (animationTimer <= 0) {
+			moveUp = false;
+			posY -= 1;
+		}
+	}
+	if (moveDown) {
+		entitySprite.move(sf::Vector2f(0, OverWorldMap::getTileSize() / delay));
+		if (animationTimer <= 0) {
+			moveDown = false;
+			posY += 1;
+		}
+	}
+	if (animationTimer <= 0) {
+		animationTimer = delay;
 	}
 }
 

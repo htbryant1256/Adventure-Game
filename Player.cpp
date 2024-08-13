@@ -106,23 +106,22 @@ void Player::update(OverWorldMap& overWorldMap)
 			entitySprite.setTexture(&entityTexture.up[0], false);
 		}
 	}
-	
 //TODO This logic is bogus, add animations inside of the movePlayer function.
 	if (moveLeft) {
 		animateLeft();
-		movePlayer();
+		moveEntity();
 	}
 	else if (moveRight) {
 		animateRight();
-		movePlayer();
+		moveEntity();
 	}
 	else if (moveUp) {
 		animateUp();
-		movePlayer();
+		moveEntity();
 	}
 	else if (moveDown) {
 		animateDown();
-		movePlayer();
+		moveEntity();
 	}
 	
 	updateScreenChange(overWorldMap);
@@ -142,40 +141,7 @@ void Player::update(OverWorldMap& overWorldMap)
 	}
 }
 
-void Player::movePlayer()
-{
-	if (moveRight) {
-		entitySprite.move(sf::Vector2f(50 / delay, 0));
-		if (animationTimer <= 0) {
-			moveRight = false;
-			posX += 1;
-		}
-	}
-	if (moveLeft) {
-		entitySprite.move(sf::Vector2f(-50 / delay, 0));
-		if (animationTimer <= 0) {
-			moveLeft = false;
-			posX -= 1;
-		}
-	}
-	if (moveUp) {
-		entitySprite.move(sf::Vector2f(0, -50 / delay));
-		if (animationTimer <= 0) {
-			moveUp = false;
-			posY -= 1;
-		}
-	}
-	if (moveDown) {
-		entitySprite.move(sf::Vector2f(0, 50 / delay));
-		if (animationTimer <= 0) {
-			moveDown = false;
-			posY += 1;
-		}
-	}
-	if (animationTimer <= 0) {
-		animationTimer = delay;
-	}
-}
+
 
 void Player::initTextures()
 {

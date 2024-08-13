@@ -23,9 +23,13 @@ public:
 		WEST = 4,
 	};
 	Direction direction;
-
+	bool moveRight = false;
+	bool moveLeft = false;
+	bool moveUp = false;
+	bool moveDown = false;
 	int health;
 	bool hit = false;
+	void moveEntity();
 
 	typedef struct entityTexture {
 		sf::Texture attackLeft;

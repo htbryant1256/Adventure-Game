@@ -8,8 +8,8 @@ Enemy::Enemy(int x, int y)
 	seekingDistance = 10;
 	srand(time(NULL));
 	health = 5;
-
-	loadTextures();
+	entitySprite.setSize(sf::Vector2f(OverWorldMap::getTileSize(), OverWorldMap::getTileSize()));
+	initTextures();
 }
 
 void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
@@ -22,39 +22,51 @@ void Enemy::update(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 			randomlyWalk(overWorldMap);
 		}
 	}
-	enemySprite.setSize(sf::Vector2f(overWorldMap.getTileSize(), overWorldMap.getTileSize()));
-	enemySprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap.getTileSize()), 40 + (posY * overWorldMap.getTileSize())));
+
 
 	updateDelay--;
 	if (hit) {
-		enemySprite.setFillColor(sf::Color(100,100,100));
+		entitySprite.setFillColor(sf::Color(100,100,100));
 	}
 	else {
-		enemySprite.setFillColor(sf::Color::White);
+		entitySprite.setFillColor(sf::Color::White);
+	}
+
+
+	if (moveLeft) {
+		animateLeft();
+		moveEntity();
+	}
+	else if (moveRight) {
+		animateRight();
+		moveEntity();
+	}
+	else if (moveUp) {
+		animateUp();
+		moveEntity();
+	}
+	else if (moveDown) {
+		animateDown();
+		moveEntity();
+	}
+	if (!moveRight && !moveLeft && !moveDown && !moveUp) {
+		entitySprite.setPosition(sf::Vector2f(10 + (posX * OverWorldMap::getTileSize()), 40 + (posY * OverWorldMap::getTileSize())));
 	}
 }
 
 void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPosY)
 {
 	if (playerPosX > posX && overWorldMap.tileMap[posY][posX + 1] < 3 && posX + 1 != playerPosX) {
-		posX += 1;
-		enemyDirectionRect.setRotation(-90);
-		enemySprite.setTexture(&enemyTextureRight, false);
+		moveRight = true;
 	}
 	else if (playerPosX < posX && overWorldMap.tileMap[posY][posX - 1] < 3 && posX +- 1 != playerPosX) {
-		posX -= 1;
-		enemyDirectionRect.setRotation(90);
-		enemySprite.setTexture(&enemyTextureLeft, false);
+		moveLeft = true;
 	}
 	if (playerPosY > posY && overWorldMap.tileMap[posY + 1][posX] < 3 && posY + 1 != playerPosY) {
-		posY += 1;
-		enemyDirectionRect.setRotation(0);
-		enemySprite.setTexture(&enemyTextureLeft, false);
+		moveDown = true;
 	}
 	else if (playerPosY < posY && overWorldMap.tileMap[posY - 1][posX] < 3 && posY - 1 != playerPosY) {
-		posY -= 1;
-		enemyDirectionRect.setRotation(180);
-		enemySprite.setTexture(&enemyTextureRight, false);
+		moveUp = true;
 	}
 	updateDelay = delay;
 }
@@ -63,42 +75,46 @@ void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 {
 	int movement = rand() % 4 + 1;
 	if (movement == 1 && overWorldMap.tileMap[posY][posX + 1] < 3) {
-		posX += 1;
-		enemyDirectionRect.setRotation(-90);
-		enemySprite.setTexture(&enemyTextureRight, false);
+		moveRight = true;
 	}
 	if (movement == 2 && overWorldMap.tileMap[posY][posX - 1] < 3) {
-		posX -= 1;
-		enemyDirectionRect.setRotation(90);
-		enemySprite.setTexture(&enemyTextureLeft, false);
+		moveLeft = true;
 	}
 	if (movement == 3 && overWorldMap.tileMap[posY + 1][posX] < 3) {
-		posY += 1;
-		enemyDirectionRect.setRotation(0);
-		enemySprite.setTexture(&enemyTextureLeft, false);
+		moveDown = true;
 	}
-	if (movement == 4 && overWorldMap.tileMap[posY - 1][posX] < 3) {
-		posY -= 1;
-		enemyDirectionRect.setRotation(180);
-		enemySprite.setTexture(&enemyTextureRight, false);
+	if (movement == 4 && overWorldMap.tileMap[posY - 1][posX] <= 3) {
+		moveUp = true;
 	}
 	updateDelay = delay;
 }
 
-void Enemy::loadTextures()
+void Enemy::initTextures()
 {
-	if (!enemyTextureLeft.loadFromFile("./Graphics/Tiles/enemyTileLeft.png"))
+	if (!entityTexture.left[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 32, 32, 32)))
 	{
-		printf("Error Loading enemyTileLeft.png\n");
+		printf("Error Loading playerSpriteSheet.png\n");
 	}
-	if (!enemyTextureRight.loadFromFile("./Graphics/Tiles/enemyTileRight.png"))
-	{
-		printf("Error Loading enemyTileRight.png\n");
+	else {
+		entityTexture.left[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 32, 32, 32));
+		entityTexture.left[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 32, 32, 32));
+		entityTexture.left[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 32, 32, 32));
+		entityTexture.right[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 0, 32, 32));
+		entityTexture.right[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 0, 32, 32));
+		entityTexture.right[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 0, 32, 32));
+		entityTexture.right[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 0, 32, 32));
+		entityTexture.up[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
+		entityTexture.up[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
+		entityTexture.up[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
+		entityTexture.up[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
+		entityTexture.down[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
+		entityTexture.down[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
+		entityTexture.down[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
+		entityTexture.down[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
+		entityTexture.attackLeft.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 64, 32, 32));
+		entityTexture.attackRight.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 64, 32, 32));
+		entityTexture.attackUp.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 64, 32, 32));
+		entityTexture.attackDown.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 64, 32, 32));
 	}
-    enemySprite.setTexture(&enemyTextureRight, false);
-}
-
-void Enemy::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)
-{
-	window->draw(enemySprite);
+	entitySprite.setTexture(&entityTexture.right[0], false);
 }
