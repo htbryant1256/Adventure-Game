@@ -59,7 +59,6 @@ void Player::updateCollisions(OverWorldMap& overWorldMap)
 			}
 		}
 	}
-	
 }
 
 void Player::updateScreenChange(OverWorldMap& overWorldMap)
@@ -89,7 +88,24 @@ void Player::updateScreenChange(OverWorldMap& overWorldMap)
 void Player::update(OverWorldMap& overWorldMap)
 {
 	updateCollisions(overWorldMap);
-	animateAttack();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
+		animateAttack();
+	}
+	else {
+		if (direction == WEST) {
+			entitySprite.setTexture(&entityTexture.left[0], false);
+		}
+		else if (direction == EAST) {
+			entitySprite.setTexture(&entityTexture.right[0], false);
+		}
+		else if (direction == SOUTH) {
+			entitySprite.setTexture(&entityTexture.down[0], false);
+		}
+		else if (direction == NORTH) {
+			entitySprite.setTexture(&entityTexture.up[0], false);
+		}
+	}
+	
 //TODO This logic is bogus, add animations inside of the movePlayer function.
 	if (moveLeft) {
 		animateLeft();
@@ -113,112 +129,55 @@ void Player::update(OverWorldMap& overWorldMap)
 // TODO make this a function for damageAnimation.
 	if (hit == true) {
 		health -= 5;
-		playerSprite.setFillColor(sf::Color(255, 0, 0));
+		entitySprite.setFillColor(sf::Color(255, 0, 0));
 		hit = false;
 	}
 	else {
-		playerSprite.setFillColor(sf::Color(255, 255, 255));
+		entitySprite.setFillColor(sf::Color(255, 255, 255));
 	}
-}
-
-void Player::animateLeft()
-{
-	animate(playerTexture.left);
-}
-
-void Player::animateRight()
-{
-	animate(playerTexture.right);
-}
-
-void Player::animateUp()
-{
-	animate(playerTexture.up);
-}
-
-void Player::animateDown()
-{
-	animate(playerTexture.down);
 }
 
 void Player::animateAttack()
 {
 	if (direction == WEST) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
-			playerSprite.setTexture(&playerTexture.attackLeft, false);
-		}
-		else {
-			playerSprite.setTexture(&playerTexture.left[0], false);
-		}
+		entitySprite.setTexture(&entityTexture.attackLeft, false);
 	}
 	else if (direction == EAST) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
-			playerSprite.setTexture(&playerTexture.attackRight, false);
-		}
-		else {
-			playerSprite.setTexture(&playerTexture.right[0], false);
-		}
+		entitySprite.setTexture(&entityTexture.attackRight, false);
 	}
 	else if (direction == SOUTH) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
-			playerSprite.setTexture(&playerTexture.attackDown, false);
-		}
-		else {
-			playerSprite.setTexture(&playerTexture.down[0], false);
-		}
+		entitySprite.setTexture(&entityTexture.attackDown, false);
 	}
 	else if (direction == NORTH) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
-			playerSprite.setTexture(&playerTexture.attackUp, false);
-		}
-		else {
-			playerSprite.setTexture(&playerTexture.up[0], false);
-		}
-	}
-}
-
-void Player::animate(sf::Texture texture[4])
-{
-	animationTimer--;
-	if (animationTimer < (delay / 4)) {
-		playerSprite.setTexture(&texture[0], false);
-	}
-	else if (animationTimer < 2 * (delay / 4)) {
-		playerSprite.setTexture(&texture[1], false);
-	}
-	else if (animationTimer < 3 * (delay / 4)) {
-		playerSprite.setTexture(&texture[2], false);
-	}
-	else if (animationTimer < 4 * (delay / 4)) {
-		playerSprite.setTexture(&texture[3], false);
+		entitySprite.setTexture(&entityTexture.attackUp, false);
 	}
 }
 
 void Player::movePlayer()
 {
 	if (moveRight) {
-		playerSprite.move(sf::Vector2f(50 / delay, 0));
+		entitySprite.move(sf::Vector2f(50 / delay, 0));
 		if (animationTimer <= 0) {
 			moveRight = false;
 			posX += 1;
 		}
 	}
 	if (moveLeft) {
-		playerSprite.move(sf::Vector2f(-50 / delay, 0));
+		entitySprite.move(sf::Vector2f(-50 / delay, 0));
 		if (animationTimer <= 0) {
 			moveLeft = false;
 			posX -= 1;
 		}
 	}
 	if (moveUp) {
-		playerSprite.move(sf::Vector2f(0, -50 / delay));
+		entitySprite.move(sf::Vector2f(0, -50 / delay));
 		if (animationTimer <= 0) {
 			moveUp = false;
 			posY -= 1;
 		}
 	}
 	if (moveDown) {
-		playerSprite.move(sf::Vector2f(0, 50 / delay));
+		entitySprite.move(sf::Vector2f(0, 50 / delay));
 		if (animationTimer <= 0) {
 			moveDown = false;
 			posY += 1;
@@ -231,42 +190,42 @@ void Player::movePlayer()
 
 void Player::initTextures()
 {
-	if (!playerTexture.left[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 32, 32, 32)))
+	if (!entityTexture.left[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 32, 32, 32)))
 	{
 		printf("Error Loading playerSpriteSheet.png\n");
 	}
 	else {
-		playerTexture.left[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 32, 32, 32));
-		playerTexture.left[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 32, 32, 32));
-		playerTexture.left[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 32, 32, 32));
-		playerTexture.right[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 0, 32, 32));
-		playerTexture.right[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 0, 32, 32));
-		playerTexture.right[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 0, 32, 32));
-		playerTexture.right[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 0, 32, 32));
-		playerTexture.up[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
-		playerTexture.up[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
-		playerTexture.up[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
-		playerTexture.up[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
-		playerTexture.down[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
-		playerTexture.down[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
-		playerTexture.down[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
-		playerTexture.down[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
-		playerTexture.attackLeft.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 64, 32, 32));
-		playerTexture.attackRight.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 64, 32, 32));
-		playerTexture.attackUp.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 64, 32, 32));
-		playerTexture.attackDown.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 64, 32, 32));
+		entityTexture.left[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 32, 32, 32));
+		entityTexture.left[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 32, 32, 32));
+		entityTexture.left[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 32, 32, 32));
+		entityTexture.right[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 0, 32, 32));
+		entityTexture.right[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 0, 32, 32));
+		entityTexture.right[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 0, 32, 32));
+		entityTexture.right[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 0, 32, 32));
+		entityTexture.up[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
+		entityTexture.up[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
+		entityTexture.up[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
+		entityTexture.up[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 96, 32, 32));
+		entityTexture.down[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
+		entityTexture.down[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
+		entityTexture.down[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
+		entityTexture.down[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 96, 32, 32));
+		entityTexture.attackLeft.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(0, 64, 32, 32));
+		entityTexture.attackRight.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(32, 64, 32, 32));
+		entityTexture.attackUp.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(64, 64, 32, 32));
+		entityTexture.attackDown.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", sf::IntRect(96, 64, 32, 32));
 	}
-	playerSprite.setTexture(&playerTexture.right[0], false);
+	entitySprite.setTexture(&entityTexture.right[0], false);
 }
 
 void Player::render(sf::RenderWindow* window, OverWorldMap* overWorldMap)
 {
 	//Remove the setSize here, it is ridiculous and expensive to run.
-	playerSprite.setSize(sf::Vector2f(overWorldMap->getTileSize(), overWorldMap->getTileSize()));
+	entitySprite.setSize(sf::Vector2f(overWorldMap->getTileSize(), overWorldMap->getTileSize()));
 	if (!moveRight && !moveLeft && !moveDown && !moveUp) {
-		playerSprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap->getTileSize()), 40 + (posY * overWorldMap->getTileSize())));
+		entitySprite.setPosition(sf::Vector2f(10 + (posX * overWorldMap->getTileSize()), 40 + (posY * overWorldMap->getTileSize())));
 	}
-	window->draw(playerSprite);
+	window->draw(entitySprite);
 }
 
 void Player::resetPlayer()
