@@ -14,6 +14,8 @@ public:
 private:
 	int x;
 	int y;
-
+	bool enemiesGenerated = true;
+	int numberOfEnemies;
+	int enemySpawnDelay = 7;
 };
 
