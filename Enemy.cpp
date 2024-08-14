@@ -58,15 +58,19 @@ void Enemy::seekPlayer(OverWorldMap& overWorldMap, int playerPosX, int playerPos
 {
 	if (playerPosX > posX && overWorldMap.tileMap[posY][posX + 1] < 3 && posX + 1 != playerPosX) {
 		moveRight = true;
+		direction = EAST;
 	}
 	else if (playerPosX < posX && overWorldMap.tileMap[posY][posX - 1] < 3 && posX +- 1 != playerPosX) {
 		moveLeft = true;
+		direction = WEST;
 	}
 	if (playerPosY > posY && overWorldMap.tileMap[posY + 1][posX] < 3 && posY + 1 != playerPosY) {
 		moveDown = true;
+		direction = SOUTH;
 	}
 	else if (playerPosY < posY && overWorldMap.tileMap[posY - 1][posX] < 3 && posY - 1 != playerPosY) {
 		moveUp = true;
+		direction = NORTH;
 	}
 	updateDelay = delay;
 }
@@ -76,15 +80,19 @@ void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 	int movement = rand() % 4 + 1;
 	if (movement == 1 && overWorldMap.tileMap[posY][posX + 1] < 3) {
 		moveRight = true;
+		direction = EAST;
 	}
 	if (movement == 2 && overWorldMap.tileMap[posY][posX - 1] < 3) {
 		moveLeft = true;
+		direction = WEST;
 	}
 	if (movement == 3 && overWorldMap.tileMap[posY + 1][posX] < 3) {
 		moveDown = true;
+		direction = SOUTH;
 	}
 	if (movement == 4 && overWorldMap.tileMap[posY - 1][posX] <= 3) {
 		moveUp = true;
+		direction = NORTH;
 	}
 	updateDelay = delay;
 }

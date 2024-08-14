@@ -1,6 +1,47 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (C++ Game.vcxproj, Krabby Clicker.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  EnemyManager.cpp
-C:\Users\henry\source\repos\Adventure_Game\EnemyManager.cpp(68,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Entity.cpp
+C:\Users\henry\source\repos\Adventure_Game\Entity.cpp(40,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\Entity.cpp(47,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\Entity.cpp(54,66): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\Entity.cpp(61,65): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Player.cpp
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(6,90): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(6,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(140,87): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\henry\source\repos\Adventure_Game\Player.cpp(140,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
   C++ Game.vcxproj -> C:\Users\henry\source\repos\Adventure_Game\x64\Debug\Adventure Game.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

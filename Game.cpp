@@ -34,8 +34,8 @@ void Game::update()
     pollEvents();
     if (player.health > 0) {
         player.update(overWorldMap);
-        enemyPlayerInteraction.update(enemyManager, player, overWorldMap);
         enemyManager.update(overWorldMap, player.posX, player.posY);
+        enemyPlayerInteraction.update(enemyManager, player, overWorldMap);
         hud.update(player);
     }
     else {

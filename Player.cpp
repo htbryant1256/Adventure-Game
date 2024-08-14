@@ -128,7 +128,7 @@ void Player::update(OverWorldMap& overWorldMap)
 	updateDelay--;
 // TODO make this a function for damageAnimation.
 	if (hit == true) {
-		health -= 5;
+		health -= 1;
 		entitySprite.setFillColor(sf::Color(255, 0, 0));
 		hit = false;
 	}
@@ -140,7 +140,6 @@ void Player::update(OverWorldMap& overWorldMap)
 		entitySprite.setPosition(sf::Vector2f(10 + (posX * OverWorldMap::getTileSize()), 40 + (posY * OverWorldMap::getTileSize())));
 	}
 }
-
 
 
 void Player::initTextures()

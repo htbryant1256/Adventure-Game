@@ -19,6 +19,7 @@ void Entity::animate(sf::Texture texture[4])
 
 void Entity::animateAttack()
 {
+	
 	if (direction == WEST) {
 		entitySprite.setTexture(&entityTexture.attackLeft, false);
 	}

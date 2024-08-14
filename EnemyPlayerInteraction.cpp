@@ -62,6 +62,7 @@ void EnemyPlayerInteraction::enemyAttackPlayer(EnemyManager& enemyManager, Playe
 		if (element.attackDelay <= 0) {
 			if (CommonMathFunctions::distanceFormula(element.posX, player.posX, element.posY, player.posY) <= 1.5) {
 				player.hit = true;
+				element.animateAttack();
 			}
 			element.attackDelay = enemyAttackDelay;
 		}
