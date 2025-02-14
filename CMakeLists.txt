@@ -4,6 +4,8 @@ project(CMakeSFMLProject LANGUAGES CXX)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+option(BUILD_SHARED_LIBS "Build using shared libraries" OFF)
+
 FetchContent_Declare(
 	SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
