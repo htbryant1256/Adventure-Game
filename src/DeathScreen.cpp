@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 void DeathScreen::render(sf::RenderWindow* window)
 {
-    window->draw(deathText);
+   // window->draw(deathText);
 }
 
 void DeathScreen::restartGame(Player& player, OverWorldMap& overWorldMap)
@@ -20,6 +20,7 @@ void DeathScreen::update(Player& player, OverWorldMap& overWorldMap)
 
 DeathScreen::DeathScreen()
 {
+    /*
     if (!deathFont.openFromFile("arial.ttf"))
     {
         printf("Error\n");
@@ -35,4 +36,5 @@ DeathScreen::DeathScreen()
 
     deathText.setStyle(sf::Text::Bold);
     deathText.setPosition(sf::Vector2f(1920 / 2, 1080 / 2));
+    */
 }

@@ -10,7 +10,7 @@ void EnemyPlayerInteraction::update(EnemyManager& enemyManager, Player& player, 
 void EnemyPlayerInteraction::playerAttackEnemy(EnemyManager& enemyManager, Player& player, OverWorldMap& overWorldMap)
 {
 	if (player.attackDelay <= 0) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::K)) {
 			for (auto& element : enemyManager.enemyVector) {
 				switch (player.direction) {
 				case player.NORTH:

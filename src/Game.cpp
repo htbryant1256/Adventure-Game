@@ -10,14 +10,15 @@ void Game::initVariables()
 
 void Game::initWindow()
 {
-    videoMode.width = windowWidth;
-	videoMode.height = windowHeight;
+    videoMode.size.x = windowWidth;
+	videoMode.size.y = windowHeight;
 	window = new sf::RenderWindow(videoMode, "Adventure Game", sf::Style::Titlebar | sf::Style::Close );
     window->setFramerateLimit(60);
 }
 
 void Game::pollEvents()
 {    
+    /*
     while (window->pollEvent(ev))
     {
         switch (ev.type)
@@ -26,7 +27,7 @@ void Game::pollEvents()
             window->close();
             break;
         }
-    }
+    }*/
 }
 
 void Game::update()

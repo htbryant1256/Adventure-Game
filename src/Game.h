@@ -17,7 +17,7 @@ class Game
 {
 private:
 	sf::RenderWindow* window;
-	sf::Event ev;
+	//sf::Event ev;
 	sf::VideoMode videoMode;
   
 	OverWorldMap overWorldMap;

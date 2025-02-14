@@ -14,6 +14,7 @@ public:
 private:
 	void restartGame(Player& player, OverWorldMap& overWorldMap);
 	sf::Font deathFont;
-	sf::Text deathText;
+	//sf:: deathText;
+	//sf::Text Text(deathText);
 };
 
