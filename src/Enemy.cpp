@@ -99,30 +99,30 @@ void Enemy::randomlyWalk(OverWorldMap& overWorldMap)
 
 void Enemy::initTextures()
 {
-	if (!entityTexture.left[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 32}, {32, 32})))
+	if (!entityTexture.left[0].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 32}, {32, 32})))
 	{
 		printf("Error Loading playerSpriteSheet.png\n");
 	}
 	else {
-		entityTexture.left[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 32}, {32, 32}));
-		entityTexture.left[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({64, 32}, {32, 32}));
-		entityTexture.left[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({96, 32}, {32, 32}));
-		entityTexture.right[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 0}, {32, 32}));
-		entityTexture.right[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 0}, {32, 32}));
-		entityTexture.right[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({64, 0}, {32, 32}));
-		entityTexture.right[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({96, 0}, {32, 32}));
-		entityTexture.up[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 96}, {32, 32}));
-		entityTexture.up[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 96}, {32, 32}));
-		entityTexture.up[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 96}, {32, 32}));
-		entityTexture.up[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 96}, {32, 32}));
-		entityTexture.down[0].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 96}, {32, 32}));
-		entityTexture.down[1].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 96}, {32, 32}));
-		entityTexture.down[2].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 96}, {32, 32}));
-		entityTexture.down[3].loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 96}, {32, 32}));
-		entityTexture.attackLeft.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 64}, {32, 32}));
-		entityTexture.attackRight.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 64}, {32, 32}));
-		entityTexture.attackUp.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({64, 64}, {32, 32}));
-		entityTexture.attackDown.loadFromFile("./Graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({96, 64}, {32, 32}));
+		entityTexture.left[1].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 32}, {32, 32}));
+		entityTexture.left[2].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({64, 32}, {32, 32}));
+		entityTexture.left[3].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({96, 32}, {32, 32}));
+		entityTexture.right[0].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 0}, {32, 32}));
+		entityTexture.right[1].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 0}, {32, 32}));
+		entityTexture.right[2].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({64, 0}, {32, 32}));
+		entityTexture.right[3].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({96, 0}, {32, 32}));
+		entityTexture.up[0].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 96}, {32, 32}));
+		entityTexture.up[1].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 96}, {32, 32}));
+		entityTexture.up[2].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 96}, {32, 32}));
+		entityTexture.up[3].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 96}, {32, 32}));
+		entityTexture.down[0].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 96}, {32, 32}));
+		entityTexture.down[1].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 96}, {32, 32}));
+		entityTexture.down[2].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 96}, {32, 32}));
+		entityTexture.down[3].loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 96}, {32, 32}));
+		entityTexture.attackLeft.loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({0, 64}, {32, 32}));
+		entityTexture.attackRight.loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({32, 64}, {32, 32}));
+		entityTexture.attackUp.loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({64, 64}, {32, 32}));
+		entityTexture.attackDown.loadFromFile("../../gameAssets/graphics/Tiles/playerSpriteSheet.png", false, sf::IntRect({96, 64}, {32, 32}));
 	}
 	entitySprite.setTexture(&entityTexture.right[0], false);
 }

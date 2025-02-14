@@ -35,23 +35,23 @@ void OverWorldMap::render(sf::RenderWindow* window)
 
 void OverWorldMap::loadTextures() 
 {
-	if (!stoneTexture.loadFromFile("./Graphics/lightTiles/stoneTile.png"))
+	if (!stoneTexture.loadFromFile("../../gameAssets/graphics/lightTiles/stoneTile.png"))
 	{
 		printf("Error Loading stoneTile.png\n");
 	}
-	if (!grassTexture.loadFromFile("./Graphics/lightTiles/grassTile.png"))
+	if (!grassTexture.loadFromFile("../../gameAssets/graphics/lightTiles/grassTile.png"))
 	{
 		printf("Error Loading grassTile.png\n");
 	}
-	if (!sandTexture.loadFromFile("./Graphics/lightTiles/sandTile.png"))
+	if (!sandTexture.loadFromFile("../../gameAssets/graphics/lightTiles/sandTile.png"))
 	{
 		printf("Error Loading grassTile.png\n");
 	}
-	if (!waterTexture.loadFromFile("./Graphics/lightTiles/waterTile.png"))
+	if (!waterTexture.loadFromFile("../../gameAssets/graphics/lightTiles/waterTile.png"))
 	{
 		printf("Error Loading grassTile.png\n");
 	}
-	if (!woodTexture.loadFromFile("./Graphics/lightTiles/woodTile.png"))
+	if (!woodTexture.loadFromFile("../../gameAssets/graphics/lightTiles/woodTile.png"))
 	{
 		printf("Error Loading grassTile.png\n");
 	}
