@@ -3,8 +3,8 @@
 #include "SFML/Window.hpp"
 #include "SFML/System.hpp"
 #include "SFML/Network.hpp"
-//#include "json/value.h"
-//#include "json/json.h"
+#include "json/value.h"
+#include "json/json.h"
 #include <fstream> 
 
 class OverWorldMap
@@ -36,8 +36,8 @@ private:
 	int mapWidth = 0;
 	static const int tileSize = 65;
 
-	//Json::Value actualJson;
-	//Json::Reader reader;
+	Json::Value actualJson;
+	Json::Reader reader;
 	sf::Texture stoneTexture;
 	sf::Texture grassTexture;
 	sf::Texture waterTexture;

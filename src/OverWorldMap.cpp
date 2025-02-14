@@ -59,10 +59,10 @@ void OverWorldMap::loadTextures()
 
 void OverWorldMap::initJsonReader()
 {
-	std::ifstream file("TileMap/MapTest.json");
-	//reader.parse(file, actualJson);
-	//mapWidth = actualJson["layers"][0]["width"].asInt();
-	//mapHeight = actualJson["layers"][0]["height"].asInt();
+	std::ifstream file("../../gameAssets/tileMap/MapTest.json");
+	reader.parse(file, actualJson);
+	mapWidth = actualJson["layers"][0]["width"].asInt();
+	mapHeight = actualJson["layers"][0]["height"].asInt();
 }
 
 
@@ -107,7 +107,7 @@ void OverWorldMap::loadMapFromJson()
 {
 	for (int i = 0; i < tileMapHeight; i++) {
 		for (int j = 0; j < tileMapWidth; j++) {
-			//tileMap[i][j] = (char)actualJson["layers"][0]["data"][getMapPositionIndex(i,j)].asInt();
+			tileMap[i][j] = (char)actualJson["layers"][0]["data"][getMapPositionIndex(i,j)].asInt();
 		}
 	}
 	newMapLoaded = true;

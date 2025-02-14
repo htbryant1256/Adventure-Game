@@ -15,8 +15,8 @@ FetchContent_MakeAvailable(SFML)
 file(GLOB SOURCES "./src/*.cpp")
 
 add_executable(main ${SOURCES})
-target_include_directories(main PRIVATE gameAssets/graphics)
+target_include_directories(main PRIVATE gameAssets/graphics build/_deps/jsoncpp-src/include)
 
 target_compile_features(main PRIVATE cxx_std_17)
-target_link_libraries(main PRIVATE SFML::Graphics)
+target_link_libraries(main PRIVATE SFML::Graphics jsoncpp)
 

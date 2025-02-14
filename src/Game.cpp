@@ -27,7 +27,7 @@ void Game::pollEvents()
             window->close();
             break;
         }
-    }
+    }*/
 }
 
 void Game::update()
