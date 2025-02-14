@@ -1,6 +1,5 @@
 #pragma once
 #include "OverWorldMap.h"
-#include <cmath>
 class CommonMathFunctions
 {
 public:

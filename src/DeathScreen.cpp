@@ -1,5 +1,5 @@
 #include "DeathScreen.h"
-
+#include <SFML/Graphics.hpp>
 void DeathScreen::render(sf::RenderWindow* window)
 {
     window->draw(deathText);
@@ -13,18 +13,18 @@ void DeathScreen::restartGame(Player& player, OverWorldMap& overWorldMap)
 
 void DeathScreen::update(Player& player, OverWorldMap& overWorldMap)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter)) {
         restartGame(player, overWorldMap);
     }   
 }
 
 DeathScreen::DeathScreen()
 {
-    if (!deathFont.loadFromFile("arial.ttf"))
+    if (!deathFont.openFromFile("arial.ttf"))
     {
         printf("Error\n");
     }
-
+    
     deathText.setFont(deathFont);
 
     deathText.setString("Press Enter To Respawn");
