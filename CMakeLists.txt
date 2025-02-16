@@ -17,6 +17,9 @@ FetchContent_Declare(
 FetchContent_Declare(
 	JsonCPP
     GIT_REPOSITORY https://github.com/open-source-parsers/jsoncpp.git
+	GIT_TAG 1.9.6
+	GIT_SHALLOW ON
+    SYSTEM
 )
 
 FetchContent_MakeAvailable(SFML JsonCPP)
