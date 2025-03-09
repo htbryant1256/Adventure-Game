@@ -8,9 +8,9 @@
 #include <iostream>
 
 #include "OverWorldMap.h"
-#include "Player.h"
-#include "EnemyManager.h"
-#include "EnemyPlayerInteraction.h"
+#include "../entities/Player.h"
+#include "../entities/EnemyManager.h"
+#include "../entities/EnemyPlayerInteraction.h"
 #include "HUD.h"
 #include "DeathScreen.h"
 class Game

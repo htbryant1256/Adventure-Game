@@ -24,11 +24,11 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(SFML JsonCPP)
 
-file(GLOB SOURCES "./src/*.cpp")
+file(GLOB SOURCES "./src/*.cpp" "./src/entities/*.cpp" "./src/core/*.cpp" "./src/util/*.cpp" )
 
 add_executable(main ${SOURCES})
 
-target_include_directories(main PRIVATE gameAssets/graphics build/_deps/jsoncpp-src/include)
+target_include_directories(main PRIVATE gameAssets/graphics build/_deps/jsoncpp-src/include src/entities src/core src/util)
 
 target_compile_features(main PRIVATE cxx_std_17)
 

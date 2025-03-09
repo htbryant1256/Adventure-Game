@@ -2,7 +2,7 @@
 #include "Enemy.h"
 #include <stdlib.h>     
 #include <time.h>
-#include "CommonMathFunctions.h"
+#include "../util/CommonMathFunctions.h"
 class EnemyManager
 {
 public:

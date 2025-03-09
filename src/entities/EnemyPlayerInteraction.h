@@ -1,8 +1,8 @@
 #pragma once
-#include "OverWorldMap.h"
+#include "../core/OverWorldMap.h"
 #include "EnemyManager.h"
 #include "Player.h"
-#include "CommonMathFunctions.h"
+#include "../util/CommonMathFunctions.h"
 
 class EnemyPlayerInteraction
 {

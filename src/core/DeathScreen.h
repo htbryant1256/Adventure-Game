@@ -3,7 +3,7 @@
 #include "SFML/Window.hpp"
 #include "SFML/System.hpp"
 #include "SFML/Network.hpp"
-#include "Player.h"
+#include "../entities/Player.h"
 
 class DeathScreen
 {

@@ -1,9 +1,9 @@
 #pragma once
 #include "Entity.h"
-#include "OverWorldMap.h"
+#include "../core/OverWorldMap.h"
 #include <stdlib.h>     
 #include <time.h>
-#include "CommonMathFunctions.h"
+#include "../util/CommonMathFunctions.h"
 class Enemy :
     public Entity
 {
